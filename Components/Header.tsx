@@ -45,7 +45,7 @@ export default function Header() {
       </header>
 
       {sidebarOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex">
+        <div className="fixed inset-0 bg-black/50 z-50 flex select-none">
           <aside className="bg-white w-64 p-6 flex flex-col gap-4">
             <button
               className="self-end mb-4 cursor-pointer hover:scale-125 transition"
