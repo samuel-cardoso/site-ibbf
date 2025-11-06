@@ -1,15 +1,26 @@
 import { PageTitle } from "@/components/PageTitle";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Crimson_Text, Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const crimsonText = Crimson_Text({
+  variable: "--font-crimson-text",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+  style: ["normal", "italic"],
+});
+
+const robotoMono = Roboto_Mono({
+  variable: "--font-roboto-mono",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export default function RootLayout({
@@ -20,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${crimsonText.variable} ${roboto.variable} ${robotoMono.variable} antialiased`}
       >
         <PageTitle />
         {children}
