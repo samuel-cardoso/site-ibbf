@@ -1,6 +1,13 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { smoothScrollTo } from "@/lib/utils";
 
 const Hero = () => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollTo(href, 80); // 80px é a altura da navbar
+  };
   return (
     <section id="inicio" className="relative h-screen flex items-center justify-center m-0">
       {/* Background Image with Overlay */}
@@ -25,7 +32,7 @@ const Hero = () => {
             className="bg-primary hover:bg-primary-light text-primary-foreground font-body font-semibold"
             asChild
           >
-            <a href="#sobre">Conheça-nos</a>
+            <a href="#sobre" onClick={(e) => handleSmoothScroll(e, "#sobre")}>Conheça-nos</a>
           </Button>
           <Button 
             size="lg"
@@ -33,7 +40,7 @@ const Hero = () => {
             className="border-2 border-primary-foreground hover:bg-primary-foreground hover:text-foreground font-body font-semibold"
             asChild
           >
-            <a href="#contato">Fale Conosco</a>
+            <a href="#contato" onClick={(e) => handleSmoothScroll(e, "#contato")}>Fale Conosco</a>
           </Button>
         </div>
       </div>

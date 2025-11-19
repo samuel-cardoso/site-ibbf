@@ -1,4 +1,12 @@
+"use client";
+
+import { smoothScrollTo } from "@/lib/utils";
+
 const About = () => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollTo(href, 80); // 80px é a altura da navbar
+  };
   return (
     <section id="sobre" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -26,6 +34,7 @@ const About = () => {
             <div className="mt-8">
               <a 
                 href="#programacao"
+                onClick={(e) => handleSmoothScroll(e, "#programacao")}
                 className="inline-block font-body font-semibold text-primary hover:text-primary-light transition-colors"
               >
                 Veja nossa programação →

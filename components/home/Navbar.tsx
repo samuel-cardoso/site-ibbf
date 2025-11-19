@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, X, Cross, Lock, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { smoothScrollTo } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -21,6 +22,12 @@ const Navbar = () => {
     { name: "Programação", href: "#programacao" },
     { name: "Contato", href: "#contato" },
   ];
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollTo(href, 80); // 80px é a altura da navbar (h-20)
+    setIsOpen(false); // Fecha o menu mobile se estiver aberto
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
@@ -43,6 +50,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleSmoothScroll(e, link.href)}
                 className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors"
               >
                 {link.name}
@@ -97,7 +105,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
                   className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors px-2 py-2"
                 >
                   {link.name}
