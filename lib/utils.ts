@@ -22,5 +22,13 @@ export function smoothScrollTo(href: string, offset: number = 80) {
       top: offsetPosition,
       behavior: "smooth"
     });
+
+    // Atualiza o hash na URL sem recarregar a página (para o page title funcionar)
+    // Usa history.pushState para não disparar scroll adicional
+    if (window.history && window.history.pushState) {
+      window.history.pushState(null, "", href);
+      // Dispara evento hashchange manualmente para atualizar o título
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    }
   }
 }
