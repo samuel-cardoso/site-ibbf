@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Plataforma IBBF - Site Institucional
 
-## Getting Started
+Site institucional da **1ª Igreja Batista Bíblica Fundamentalista de Canoas**, desenvolvido com Next.js 15 e React 19. Uma site moderno, responsivo e acessível para apresentar informações sobre a igreja, programação de cultos e eventos, além de facilitar o contato com a congregação.
 
-First, run the development server:
+## 🚀 Tecnologias
 
+Este projeto utiliza as seguintes tecnologias:
+
+- **[Next.js 15.5.3](https://nextjs.org/)** - Framework React com App Router
+- **[React 19.1.0](https://react.dev/)** - Biblioteca JavaScript para interfaces
+- **[TypeScript 5](https://www.typescriptlang.org/)** - Superset JavaScript com tipagem estática
+- **[Tailwind CSS 4](https://tailwindcss.com/)** - Framework CSS utility-first
+- **[Radix UI](https://www.radix-ui.com/)** - Componentes acessíveis e não estilizados
+- **[Lucide React](https://lucide.dev/)** - Biblioteca de ícones
+- **[shadcn/ui](https://ui.shadcn.com/)** - Componentes UI construídos com Radix UI e Tailwind CSS
+
+## ✨ Funcionalidades
+
+### 🏠 Página Inicial
+- **Hero Section**: Seção de boas-vindas com imagem de fundo e call-to-actions
+- **Sobre Nós**: Apresentação da igreja, missão e valores
+- **Programação**: Exibição dos cultos e eventos semanais
+- **Contato**: Informações de contato e mapa interativo do Google Maps
+- **Footer**: Rodapé com informações adicionais
+
+### 🎨 Recursos de UX/UI
+- ✅ **Design Responsivo**: Totalmente adaptado para mobile, tablet e desktop
+- ✅ **Scroll Suave**: Navegação fluida entre seções
+- ✅ **Page Title Dinâmico**: Título da página atualiza conforme a seção visível
+- ✅ **Botão Voltar ao Topo**: Aparece automaticamente no mobile ao sair da primeira seção
+- ✅ **Navbar Fixa**: Menu de navegação sempre visível com backdrop blur
+- ✅ **Menu Mobile**: Menu hambúrguer responsivo para dispositivos móveis
+- ✅ **Google Maps Integrado**: Mapa interativo com localização da igreja
+- ✅ **404 Personalizado**: Página de erro customizada
+
+### 🎯 Componentes Principais
+
+- **Navbar**: Menu de navegação fixo com links para todas as seções
+- **Hero**: Seção principal com imagem de fundo e botões de ação
+- **About**: Seção sobre a igreja com imagem e texto
+- **Schedule**: Grid de cards com programação semanal
+- **Contact**: Cards de contato e mapa do Google Maps
+- **Footer**: Rodapé com informações da igreja
+- **ScrollToTop**: Botão flutuante para voltar ao topo (apenas mobile)
+
+## 📦 Instalação
+
+### Pré-requisitos
+
+- Node.js 18+ 
+- npm
+
+### Passos
+
+1. Clone o repositório:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <url-do-repositorio>
+cd plataforma-ibbf
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Execute o servidor de desenvolvimento:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📱 Responsividade
 
-## Learn More
+O site é totalmente responsivo com breakpoints:
 
-To learn more about Next.js, take a look at the following resources:
+- **Mobile**: < 768px (md)
+- **Tablet**: ≥ 768px (md)
+- **Desktop**: ≥ 1024px (lg)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Licença
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Este projeto é privado e pertence à 1ª Igreja Batista Bíblica Fundamentalista de Canoas.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
