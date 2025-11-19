@@ -4,6 +4,7 @@ import About from "@/components/home/About";
 import Schedule from "@/components/home/Schedule";
 import Contact from "@/components/home/Contact";
 import Footer from "@/components/home/Footer";
+import ScrollToTop from "@/components/home/ScrollToTop";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Schedule />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
