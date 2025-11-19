@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-foreground text-background py-12 m-0">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Logo and Description */}
+
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <Cross className="h-8 w-8 text-primary" strokeWidth={2.5} />
@@ -20,7 +20,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Links Rápidos</h4>
             <ul className="space-y-2 font-body text-sm">
@@ -47,7 +47,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Media */}
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Redes Sociais</h4>
             <p className="font-body text-sm text-background/80 mb-4">
@@ -79,7 +78,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="border-t border-background/20 pt-8 text-center">
           <p className="font-body text-sm text-background/60">
             © {new Date().getFullYear()} Igreja Batista Fundamental. Todos os direitos reservados.

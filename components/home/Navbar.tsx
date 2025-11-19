@@ -44,7 +44,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a
@@ -88,7 +87,6 @@ const Navbar = () => {
             </Dialog>
           </div>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
@@ -97,7 +95,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col space-y-4">

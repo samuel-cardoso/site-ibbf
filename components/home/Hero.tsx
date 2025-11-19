@@ -10,7 +10,7 @@ const Hero = () => {
   };
   return (
     <section id="inicio" className="relative h-screen flex items-center justify-center m-0">
-      {/* Background Image with Overlay */}
+
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/assets/hero-church.jpg')" }}
@@ -18,7 +18,6 @@ const Hero = () => {
         <div className="absolute inset-0 bg-hero-overlay/70" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <h1 className="font-heading text-5xl md:text-7xl font-bold text-primary-foreground mb-6">
           Bem-vindo à Igreja Batista Fundamental

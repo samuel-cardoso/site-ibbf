@@ -50,7 +50,7 @@ const Schedule = () => {
   return (
     <section id="programacao" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
-        {/* Header */}
+
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
             Nossa Programação
@@ -61,7 +61,6 @@ const Schedule = () => {
           </p>
         </div>
 
-        {/* Events Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event, index) => (
             <Card key={index} className="border-2 hover:border-primary transition-colors">

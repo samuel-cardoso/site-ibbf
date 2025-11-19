@@ -33,7 +33,7 @@ const Contact = () => {
   return (
     <section id="contato" className="py-20 bg-background m-0">
       <div className="container mx-auto px-4">
-        {/* Header */}
+
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
             Fale Conosco
@@ -43,7 +43,6 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Contact Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {contactInfo.map((info, index) => (
             <Card key={index} className="text-center border-2 hover:border-primary transition-colors">
@@ -65,7 +64,6 @@ const Contact = () => {
           ))}
         </div>
 
-        {/* Google Maps */}
         <GoogleMap 
           address="R. Benjamin Franklin, 73 - Harmonia, Canoas - RS, 92310-380"
           height="500px"  
