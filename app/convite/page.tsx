@@ -153,7 +153,7 @@ export default function InvitePage() {
     <div className="min-h-screen">
       <Navbar />
       
-      <section className="relative min-h-[calc(100vh-8rem)] pt-24 pb-16 px-6 bg-gradient-to-br from-background via-secondary to-background">
+      <section className="relative min-h-[calc(100vh-8rem)] pt-32 pb-16 px-6 bg-gradient-to-br from-background via-secondary to-background">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center space-y-8">
 

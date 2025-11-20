@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, 80); // 80px é a altura da navbar (h-20)
+    smoothScrollTo(href); // Usa altura dinâmica do navbar
     setIsOpen(false); // Fecha o menu mobile se estiver aberto
   };
 
@@ -33,16 +33,23 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
 
-          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <Cross className="h-8 w-8 text-primary" strokeWidth={2.5} />
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between ">
+
+          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity group">
+            <img 
+              src="assets/logo-igreja.png" 
+              alt="Logo" 
+              className="object-contain w-14"
+            />
             <div>
-              <h1 className="font-heading text-2xl font-bold text-foreground">
-                Igreja Batista
+              <h1 className="font-heading text-sm md:text-base lg:text-xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
+                1ª Igreja Batista Bíblica
               </h1>
-              <p className="text-xs text-muted-foreground font-body">Fundamental</p>
+              <p className="font-heading text-ms md:text-lg text-muted-foreground leading-tight">
+                Fundamentalista de Canoas
+              </p>
             </div>
           </Link>
 

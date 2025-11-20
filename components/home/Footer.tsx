@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Cross, Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import { smoothScrollTo } from "@/lib/utils";
 
 const Footer = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, 80);
+    smoothScrollTo(href); // Usa altura dinâmica do navbar
   };
 
   return (
@@ -27,13 +27,21 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
 
           <div>
-            <Link href="/" className="flex items-center space-x-3 mb-4 hover:opacity-80 transition-opacity">
-              <Cross className="h-8 w-8 text-primary" strokeWidth={2.5} />
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="assets/logo-igreja-branca.png" 
+                alt="Logo" 
+                className="object-contain w-10"
+              />
               <div>
-                <h3 className="font-heading text-xl font-bold">Igreja Batista</h3>
-                <p className="text-sm text-background/80 font-body">Fundamental</p>
+                <h3 className="font-heading text-base md:text-lg font-bold text-background leading-tight">
+                  1ª Igreja Batista Bíblica
+                </h3>
+                <p className="font-heading text-sm md:text-base text-background/80 leading-tight">
+                  Fundamentalista de Canoas
+                </p>
               </div>
-            </Link>
+            </div>
             <p className="font-body text-sm text-background/80">
               Uma igreja comprometida com a pregação fiel da Palavra de Deus e a 
               comunhão dos santos.
@@ -105,7 +113,7 @@ const Footer = () => {
 
         <div className="border-t border-background/20 pt-8 text-center">
           <p className="font-body text-sm text-background/60">
-            © {new Date().getFullYear()} Igreja Batista Fundamental. Todos os direitos reservados.
+            © {new Date().getFullYear()} 1ª Igreja Batista Bíblica Fundamentalista de Canoas. Todos os direitos reservados.
           </p>
         </div>
       </div>

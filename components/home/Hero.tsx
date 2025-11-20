@@ -6,7 +6,7 @@ import { smoothScrollTo } from "@/lib/utils";
 const Hero = () => {
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, 80); // 80px é a altura da navbar
+    smoothScrollTo(href); // Usa altura dinâmica do navbar
   };
   return (
     <section id="inicio" className="relative h-screen flex items-center justify-center m-0">

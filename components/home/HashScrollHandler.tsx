@@ -14,8 +14,8 @@ export default function HashScrollHandler() {
       if (typeof window !== "undefined") {
         const hash = window.location.hash;
         if (hash) {
-          // Faz scroll para a seção
-          smoothScrollTo(hash, 80);
+          // Faz scroll para a seção (usa altura dinâmica do navbar)
+          smoothScrollTo(hash);
         }
       }
     }, 100);

@@ -5,7 +5,7 @@ import { smoothScrollTo } from "@/lib/utils";
 const About = () => {
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, 80); // 80px é a altura da navbar
+    smoothScrollTo(href); // Usa altura dinâmica do navbar
   };
   return (
     <section id="sobre" className="py-20 bg-background">

@@ -5,18 +5,40 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+// Altura padrão da navbar (fallback caso não seja possível calcular dinamicamente)
+export const NAVBAR_HEIGHT = 100;
+
+/**
+ * Calcula a altura real do navbar dinamicamente
+ * @returns Altura do navbar em pixels
+ */
+export function getNavbarHeight(): number {
+  if (typeof window === "undefined") {
+    return NAVBAR_HEIGHT;
+  }
+  
+  const navbar = document.querySelector("nav");
+  if (navbar) {
+    return navbar.offsetHeight;
+  }
+  
+  return NAVBAR_HEIGHT;
+}
+
 /**
  * Função utilitária para fazer scroll suave até um elemento
  * @param href - O href do link (ex: "#sobre")
- * @param offset - Offset adicional em pixels (padrão: 80px para compensar a navbar)
+ * @param offset - Offset adicional em pixels (padrão: altura dinâmica do navbar)
  */
-export function smoothScrollTo(href: string, offset: number = 80) {
+export function smoothScrollTo(href: string, offset?: number) {
   const targetId = href.replace("#", "");
   const element = document.getElementById(targetId);
   
   if (element) {
+    // Usa offset fornecido ou calcula dinamicamente a altura do navbar
+    const scrollOffset = offset ?? getNavbarHeight();
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    const offsetPosition = elementPosition + window.pageYOffset - scrollOffset;
 
     window.scrollTo({
       top: offsetPosition,
