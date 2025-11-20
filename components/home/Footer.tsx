@@ -1,19 +1,39 @@
+"use client"
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Cross, Facebook, Instagram, Youtube } from "lucide-react";
+import { smoothScrollTo } from "@/lib/utils";
 
 const Footer = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  const footerLinks = [
+    { name: "Início", href: "#inicio" },
+    { name: "Sobre Nós", href: "#sobre" },
+    { name: "Programação", href: "#programacao" },
+    { name: "Contato", href: "#contato" },
+  ];
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollTo(href, 80);
+  };
+
   return (
     <footer className="bg-foreground text-background py-12 m-0">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
 
           <div>
-            <div className="flex items-center space-x-3 mb-4">
+            <Link href="/" className="flex items-center space-x-3 mb-4 hover:opacity-80 transition-opacity">
               <Cross className="h-8 w-8 text-primary" strokeWidth={2.5} />
               <div>
                 <h3 className="font-heading text-xl font-bold">Igreja Batista</h3>
                 <p className="text-sm text-background/80 font-body">Fundamental</p>
               </div>
-            </div>
+            </Link>
             <p className="font-body text-sm text-background/80">
               Uma igreja comprometida com a pregação fiel da Palavra de Deus e a 
               comunhão dos santos.
@@ -24,26 +44,31 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Links Rápidos</h4>
             <ul className="space-y-2 font-body text-sm">
-              <li>
-                <a href="#inicio" className="text-background/80 hover:text-primary transition-colors">
-                  Início
-                </a>
-              </li>
-              <li>
-                <a href="#sobre" className="text-background/80 hover:text-primary transition-colors">
-                  Sobre Nós
-                </a>
-              </li>
-              <li>
-                <a href="#programacao" className="text-background/80 hover:text-primary transition-colors">
-                  Programação
-                </a>
-              </li>
-              <li>
-                <a href="#contato" className="text-background/80 hover:text-primary transition-colors">
-                  Contato
-                </a>
-              </li>
+              {footerLinks.map((link) => {
+                if (isHomePage) {
+                  return (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleSmoothScroll(e, link.href)}
+                        className="text-background/80 hover:text-primary transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={link.name}>
+                    <Link
+                      href={`/${link.href}`}
+                      className="text-background/80 hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
