@@ -1,17 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import { Menu, X, Cross, Lock, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, Cross } from "lucide-react";
 import { smoothScrollTo } from "@/lib/utils";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,36 +46,6 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button 
-                  variant="default" 
-                  size="sm"
-                  className="font-body font-semibold"
-                >
-                  <Lock className="h-4 w-4 mr-2" />
-                  Entrar
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
-                <DialogHeader className="text-center">
-                  <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary flex items-center justify-center animate-pulse">
-                    <Sparkles className="h-8 w-8 text-primary-foreground animate-fade-in" />
-                  </div>
-                  <DialogTitle className="text-2xl font-heading">Em Breve</DialogTitle>
-                  <DialogDescription className="text-base pt-2 font-body">
-                    Estamos preparando algo especial para você! O sistema de login estará disponível em breve.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="flex items-center justify-center pt-4">
-                  <div className="flex space-x-1">
-                    <div className="h-2 w-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                    <div className="h-2 w-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                    <div className="h-2 w-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
           </div>
 
           <button
@@ -108,37 +69,6 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button 
-                    variant="default" 
-                    size="sm"
-                    className="font-body font-semibold w-full"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Lock className="h-4 w-4 mr-2" />
-                    Entrar
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader className="text-center">
-                    <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-gradient-to-br from-primary via-primary-light to-primary flex items-center justify-center animate-pulse">
-                      <Sparkles className="h-8 w-8 text-primary-foreground animate-fade-in" />
-                    </div>
-                    <DialogTitle className="text-2xl font-heading">Em Breve</DialogTitle>
-                    <DialogDescription className="text-base pt-2 font-body">
-                      Estamos preparando algo especial para você! O sistema de login estará disponível em breve.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="flex items-center justify-center pt-4">
-                    <div className="flex space-x-1">
-                      <div className="h-2 w-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="h-2 w-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="h-2 w-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
             </div>
           </div>
         )}
