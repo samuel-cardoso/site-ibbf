@@ -86,6 +86,7 @@ export function usePageTitle() {
       "/sobre": "Sobre | " + DEFAULT_TITLE,
       "/programacao": "Programação | " + DEFAULT_TITLE,
       "/contato": "Contato | " + DEFAULT_TITLE,
+      "/convite": "Convite | " + DEFAULT_TITLE,
     };
 
     return titleMap[path] || DEFAULT_TITLE;
