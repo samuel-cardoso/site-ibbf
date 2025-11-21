@@ -1,5 +1,6 @@
 import { PageTitle } from "@/components/PageTitle";
-import { Crimson_Text, Roboto, Roboto_Mono } from "next/font/google";
+import { Crimson_Text, Roboto, Roboto_Mono, Great_Vibes } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const crimsonText = Crimson_Text({
@@ -23,6 +24,12 @@ const robotoMono = Roboto_Mono({
   style: ["normal", "italic"],
 });
 
+const greatVibes = Great_Vibes({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,8 +38,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br scroll-smooth">
       <body
-        className={`${crimsonText.variable} ${roboto.variable} ${robotoMono.variable} antialiased`}
+        className={`${crimsonText.variable} ${roboto.variable} ${robotoMono.variable} ${greatVibes.variable} antialiased`}
       >
+        <Toaster />
         <PageTitle />
         {children}
       </body>

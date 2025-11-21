@@ -14,6 +14,7 @@ All colors MUST be HSL.
   --font-body: var(--font-roboto);
   --font-mono: var(--font-roboto-mono);
   --font-sans: var(--font-roboto);
+  --font-script: var(--font-script);
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
   --color-popover: hsl(var(--popover));
@@ -131,5 +132,81 @@ All colors MUST be HSL.
   ::selection {
     background-color: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
+  }
+}
+
+/* Sonner Toast Styles */
+@layer base {
+  [data-sonner-toaster] {
+    --normal-bg: hsl(var(--popover));
+    --normal-text: hsl(var(--popover-foreground));
+    --normal-border: hsl(var(--border));
+    --success-bg: hsl(var(--primary));
+    --success-text: hsl(var(--primary-foreground));
+    --success-border: hsl(var(--primary));
+    --error-bg: hsl(var(--destructive));
+    --error-text: hsl(var(--destructive-foreground));
+    --error-border: hsl(var(--destructive));
+    --warning-bg: hsl(var(--accent));
+    --warning-text: hsl(var(--accent-foreground));
+    --warning-border: hsl(var(--accent));
+    --info-bg: hsl(var(--muted));
+    --info-text: hsl(var(--muted-foreground));
+    --info-border: hsl(var(--border));
+  }
+
+  [data-sonner-toast] {
+    background-color: var(--normal-bg) !important;
+    color: var(--normal-text) !important;
+    border-color: var(--normal-border) !important;
+    font-family: var(--font-body);
+  }
+
+  [data-sonner-toast][data-type="success"] {
+    background-color: var(--success-bg) !important;
+    color: var(--success-text) !important;
+    border-color: var(--success-border) !important;
+  }
+
+  [data-sonner-toast][data-type="error"] {
+    background-color: var(--error-bg) !important;
+    color: var(--error-text) !important;
+    border-color: var(--error-border) !important;
+  }
+
+  [data-sonner-toast][data-type="error"] [data-description] {
+    color: var(--error-text) !important;
+    opacity: 0.9;
+  }
+
+  [data-sonner-toast][data-type="warning"] {
+    background-color: var(--warning-bg) !important;
+    color: var(--warning-text) !important;
+    border-color: var(--warning-border) !important;
+  }
+
+  [data-sonner-toast][data-type="warning"] [data-description] {
+    color: var(--warning-text) !important;
+    opacity: 0.9;
+  }
+
+  [data-sonner-toast][data-type="info"] {
+    background-color: var(--info-bg) !important;
+    color: var(--info-text) !important;
+    border-color: var(--info-border) !important;
+  }
+
+  [data-sonner-toast][data-type="info"] [data-description] {
+    color: var(--info-text) !important;
+    opacity: 0.9;
+  }
+
+  [data-sonner-toast] [data-description] {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  [data-sonner-toast][data-type="success"] [data-description] {
+    color: var(--success-text) !important;
+    opacity: 0.9;
   }
 }

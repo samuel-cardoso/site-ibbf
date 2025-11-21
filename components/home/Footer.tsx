@@ -1,6 +1,26 @@
-import { Cross, Facebook, Instagram, Youtube } from "lucide-react";
+"use client"
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Facebook, Instagram, Youtube } from "lucide-react";
+import { smoothScrollTo } from "@/lib/utils";
 
 const Footer = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  const footerLinks = [
+    { name: "Início", href: "#inicio" },
+    { name: "Sobre Nós", href: "#sobre" },
+    { name: "Programação", href: "#programacao" },
+    { name: "Contato", href: "#contato" },
+  ];
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollTo(href); // Usa altura dinâmica do navbar
+  };
+
   return (
     <footer className="bg-foreground text-background py-12 m-0">
       <div className="container mx-auto px-4">
@@ -8,10 +28,18 @@ const Footer = () => {
 
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <Cross className="h-8 w-8 text-primary" strokeWidth={2.5} />
+              <img 
+                src="assets/logo-igreja-branca.png" 
+                alt="Logo" 
+                className="object-contain w-10"
+              />
               <div>
-                <h3 className="font-heading text-xl font-bold">Igreja Batista</h3>
-                <p className="text-sm text-background/80 font-body">Fundamental</p>
+                <h3 className="font-heading text-base md:text-lg font-bold text-background leading-tight">
+                  1ª Igreja Batista Bíblica
+                </h3>
+                <p className="font-heading text-sm md:text-base text-background/80 leading-tight">
+                  Fundamentalista de Canoas
+                </p>
               </div>
             </div>
             <p className="font-body text-sm text-background/80">
@@ -24,26 +52,31 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Links Rápidos</h4>
             <ul className="space-y-2 font-body text-sm">
-              <li>
-                <a href="#inicio" className="text-background/80 hover:text-primary transition-colors">
-                  Início
-                </a>
-              </li>
-              <li>
-                <a href="#sobre" className="text-background/80 hover:text-primary transition-colors">
-                  Sobre Nós
-                </a>
-              </li>
-              <li>
-                <a href="#programacao" className="text-background/80 hover:text-primary transition-colors">
-                  Programação
-                </a>
-              </li>
-              <li>
-                <a href="#contato" className="text-background/80 hover:text-primary transition-colors">
-                  Contato
-                </a>
-              </li>
+              {footerLinks.map((link) => {
+                if (isHomePage) {
+                  return (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleSmoothScroll(e, link.href)}
+                        className="text-background/80 hover:text-primary transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={link.name}>
+                    <Link
+                      href={`/${link.href}`}
+                      className="text-background/80 hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -80,7 +113,7 @@ const Footer = () => {
 
         <div className="border-t border-background/20 pt-8 text-center">
           <p className="font-body text-sm text-background/60">
-            © {new Date().getFullYear()} Igreja Batista Fundamental. Todos os direitos reservados.
+            © {new Date().getFullYear()} 1ª Igreja Batista Bíblica Fundamentalista de Canoas. Todos os direitos reservados.
           </p>
         </div>
       </div>
