@@ -1,49 +1,49 @@
-import { Calendar, Clock, Users, BookOpen } from "lucide-react";
+import { Calendar, Clock, Users, GraduationCap, Heart, Baby, Mic2, Church } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Schedule = () => {
   const events = [
     {
-      icon: BookOpen,
+      icon: GraduationCap,
       title: "Escola Bíblica Dominical",
       day: "Domingos",
       time: "09:00",
-      description: "Estudo bíblico para todas as idades"
+      description: "Estudo bíblico para todas as idades."
     },
     {
-      icon: Users,
-      title: "Culto Matutino",
+      icon: Church,
+      title: "Culto de Adoração",
       day: "Domingos",
-      time: "10:30",
-      description: "Culto de adoração e pregação"
+      time: "19:30",
+      description: "Culto de adoração e pregação."
     },
     {
-      icon: Users,
-      title: "Culto Vespertino",
-      day: "Domingos",
-      time: "18:00",
-      description: "Culto de louvor e mensagem"
-    },
-    {
-      icon: BookOpen,
-      title: "Estudo Bíblico",
+      icon: Heart,
+      title: "Culto de Oração",
       day: "Quartas-feiras",
       time: "19:30",
-      description: "Estudo aprofundado das Escrituras"
+      description: "Culto de oração e pregação"
     },
     {
-      icon: Users,
-      title: "Reunião de Oração",
-      day: "Sextas-feiras",
-      time: "19:30",
-      description: "Momento de intercessão e súplicas"
-    },
-    {
-      icon: Users,
-      title: "Jovens",
+      icon: Baby,
+      title: "Clube Leões de Judá",
       day: "Sábados",
-      time: "19:00",
-      description: "Reunião da mocidade"
+      time: "14:00",
+      description: "Atividades e estudo bíblico para crianças."
+    },
+    {
+      icon: Users,
+      title: "Reunião de Jovens",
+      day: "Sábados",
+      time: "15:00",
+      description: "Confraternização, louvor e estudo bíblico para jovens."
+    },
+    {
+      icon: Mic2,
+      title: "Ensaio de Música",
+      day: "Domingos",
+      time: "17:00",
+      description: "Preparação para o culto de adoração."
     }
   ];
 
