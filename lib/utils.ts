@@ -35,23 +35,38 @@ export function smoothScrollTo(href: string, offset?: number) {
   const element = document.getElementById(targetId);
   
   if (element) {
-    // Usa offset fornecido ou calcula dinamicamente a altura do navbar
-    const scrollOffset = offset ?? getNavbarHeight();
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - scrollOffset;
+    // Pequeno delay para garantir que o layout está estável (especialmente importante no mobile)
+    requestAnimationFrame(() => {
+      // Usa offset fornecido ou calcula dinamicamente a altura do navbar
+      const scrollOffset = offset ?? getNavbarHeight();
+      
+      // Obtém a posição atual do scroll (compatível com mobile)
+      const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      
+      // Obtém a posição do elemento relativa ao viewport
+      const elementRect = element.getBoundingClientRect();
+      const elementPosition = elementRect.top;
+      
+      // Calcula a posição absoluta do elemento no documento
+      const elementAbsolutePosition = elementPosition + currentScrollY;
+      
+      // Calcula a posição final considerando o offset do navbar
+      const targetPosition = elementAbsolutePosition - scrollOffset;
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth"
+      // Usa scrollTo com comportamento suave
+      window.scrollTo({
+        top: Math.max(0, targetPosition), // Garante que não seja negativo
+        behavior: "smooth"
+      });
+
+      // Atualiza o hash na URL sem recarregar a página (para o page title funcionar)
+      // Usa history.pushState para não disparar scroll adicional
+      if (window.history && window.history.pushState) {
+        window.history.pushState(null, "", href);
+        // Dispara evento hashchange manualmente para atualizar o título
+        window.dispatchEvent(new HashChangeEvent("hashchange"));
+      }
     });
-
-    // Atualiza o hash na URL sem recarregar a página (para o page title funcionar)
-    // Usa history.pushState para não disparar scroll adicional
-    if (window.history && window.history.pushState) {
-      window.history.pushState(null, "", href);
-      // Dispara evento hashchange manualmente para atualizar o título
-      window.dispatchEvent(new HashChangeEvent("hashchange"));
-    }
   }
 }
 
