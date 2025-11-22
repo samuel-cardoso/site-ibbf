@@ -8,7 +8,7 @@ const About = () => {
     smoothScrollTo(href); // Usa altura dinâmica do navbar
   };
   return (
-    <section id="sobre" className="py-6 md:py-20 m-0 bg-background">
+    <section id="sobre" className="py-6 md:py-34 m-0 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}

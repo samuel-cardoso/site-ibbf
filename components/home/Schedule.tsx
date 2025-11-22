@@ -48,7 +48,7 @@ const Schedule = () => {
   ];
 
   return (
-    <section id="programacao" className="py-6 md:py-20 bg-secondary m-0">
+    <section id="programacao" className="py-6 md:py-34 bg-secondary m-0">
       <div className="container mx-auto px-4">
 
         <div className="text-center mb-12">
