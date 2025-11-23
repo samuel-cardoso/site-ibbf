@@ -7,19 +7,19 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Endereço",
-      content: "Rua da Igreja, 123 - Centro",
-      subContent: "São Paulo - SP, CEP 01234-567"
+      content: "R. Benjamin Franklin, 73 - Harmonia",
+      subContent: "Canoas - RS, CEP 92310-380"
     },
     {
       icon: Phone,
       title: "Telefone",
-      content: "(11) 98765-4321",
-      subContent: "Ligue ou mande mensagem"
+      content: "(51) 99130-6543",
+      subContent: "Mande mensagem via WhatsApp"
     },
     {
       icon: Mail,
       title: "E-mail",
-      content: "contato@ibfundamental.com.br",
+      content: "contato@ibbfcanoas.com.br",
       subContent: "Responderemos em breve"
     },
     {
@@ -31,7 +31,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contato" className="py-20 bg-background m-0">
+    <section id="contato" className="py-6 md:py-34 bg-background m-0">
       <div className="container mx-auto px-4">
 
         <div className="text-center mb-12">

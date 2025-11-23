@@ -193,9 +193,8 @@ export default function InvitePage() {
                   </p>
                   <p className="font-body text-base text-muted-foreground leading-relaxed">
                     Escola Bíblica Dominical - Domingo às 9h<br />
-                    Culto Dominical - Domingo às 19h<br />
-                    Reunião de Oração - Quarta-feira às 20h<br />
-                    Culto de Jovens - Sábado às 19h
+                    Culto de Adoração - Domingo às 19h30<br />
+                    Reunião de Oração - Quarta-feira às 19h30<br />
                   </p>
                 </div>
               </div>

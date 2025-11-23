@@ -9,18 +9,45 @@ import { smoothScrollTo } from "@/lib/utils";
  */
 export default function HashScrollHandler() {
   useEffect(() => {
-    // Aguarda um pouco para garantir que o DOM está totalmente carregado
-    const timer = setTimeout(() => {
-      if (typeof window !== "undefined") {
-        const hash = window.location.hash;
-        if (hash) {
-          // Faz scroll para a seção (usa altura dinâmica do navbar)
-          smoothScrollTo(hash);
-        }
-      }
-    }, 100);
+    if (typeof window === "undefined") return;
 
-    return () => clearTimeout(timer);
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    // Função para fazer o scroll após garantir que tudo está carregado
+    const performScroll = () => {
+      // Aguarda múltiplos frames para garantir que o layout está estável
+      // Isso é especialmente importante no mobile onde o layout pode mudar após o carregamento
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const element = document.getElementById(hash.replace("#", ""));
+          if (element) {
+            smoothScrollTo(hash);
+          } else {
+            // Se o elemento ainda não existe, tenta novamente após um delay maior
+            setTimeout(() => {
+              smoothScrollTo(hash);
+            }, 300);
+          }
+        });
+      });
+    };
+
+    // Se a página já está carregada, faz o scroll imediatamente
+    if (document.readyState === "complete") {
+      performScroll();
+    } else {
+      // Aguarda o carregamento completo da página
+      window.addEventListener("load", performScroll, { once: true });
+      
+      // Também tenta após um timeout como fallback
+      const timer = setTimeout(performScroll, 500);
+
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("load", performScroll);
+      };
+    }
   }, []);
 
   return null;

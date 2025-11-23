@@ -8,7 +8,7 @@ const About = () => {
     smoothScrollTo(href); // Usa altura dinâmica do navbar
   };
   return (
-    <section id="sobre" className="py-20 bg-background">
+    <section id="sobre" className="py-6 md:py-34 m-0 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -18,8 +18,8 @@ const About = () => {
             </h2>
             <div className="space-y-4 font-body text-lg text-foreground/80">
               <p>
-                Somos uma igreja batista fundamental tradicional, comprometida com a pregação fiel 
-                da Palavra de Deus, a comunhão dos santos e a edificação do corpo de Cristo.
+                Somos uma igreja com mais de 47 anos de existência, e continuamos comprometidos com a pregação fiel 
+                da Palavra de Deus para salvação e a edificação do corpo de Cristo.
               </p>
               <p>
                 Nossa igreja foi fundada com o propósito de ser uma comunidade onde famílias possam 
