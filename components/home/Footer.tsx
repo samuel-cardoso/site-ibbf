@@ -11,7 +11,7 @@ const Footer = () => {
 
   const footerLinks = [
     { name: "Início", href: "#inicio" },
-    { name: "Sobre Nós", href: "#sobre" },
+    { name: "Sobre", href: "#sobre" },
     { name: "Programação", href: "#programacao" },
     { name: "Contato", href: "#contato" },
   ];
@@ -51,33 +51,47 @@ const Footer = () => {
 
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Links Rápidos</h4>
-            <ul className="space-y-2 font-body text-sm">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 font-body text-sm">
               {footerLinks.map((link) => {
                 if (isHomePage) {
                   return (
-                    <li key={link.name}>
-                      <a
-                        href={link.href}
-                        onClick={(e) => handleSmoothScroll(e, link.href)}
-                        className="text-background/80 hover:text-primary transition-colors"
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  );
-                }
-                return (
-                  <li key={link.name}>
-                    <Link
-                      href={`/${link.href}`}
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={(e) => handleSmoothScroll(e, link.href)}
                       className="text-background/80 hover:text-primary transition-colors"
                     >
                       {link.name}
-                    </Link>
-                  </li>
+                    </a>
+                  );
+                }
+                return (
+                  <Link
+                    key={link.name}
+                    href={`/${link.href}`}
+                    className="text-background/80 hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
                 );
               })}
-            </ul>
+              {/* Link Convite na segunda coluna */}
+              {isHomePage ? (
+                <Link
+                  href="/convite"
+                  className="text-background/80 hover:text-primary transition-colors"
+                >
+                  Convite
+                </Link>
+              ) : (
+                <Link
+                  href="/convite"
+                  className="text-background/80 hover:text-primary transition-colors"
+                >
+                  Convite
+                </Link>
+              )}
+            </div>
           </div>
 
           <div>
