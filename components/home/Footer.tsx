@@ -91,6 +91,13 @@ const Footer = () => {
                   Convite
                 </Link>
               )}
+              {/* Link LGPD */}
+              <Link
+                href="/ldpg"
+                className="text-background/80 hover:text-primary transition-colors"
+              >
+                LGPD
+              </Link>
             </div>
           </div>
 
