@@ -61,7 +61,7 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
           <Button 
             size="lg"
-            className="bg-primary hover:bg-primary-light text-primary-foreground font-body font-semibold text-base sm:text-lg py-6 sm:py-6 w-full sm:w-auto min-w-[200px]"
+            className="bg-primary hover:bg-primary-light text-primary-foreground font-body font-semibold text-base sm:text-lg h-12 sm:h-12 w-full sm:w-auto min-w-[200px]"
             asChild
           >
             <a href="#sobre" onClick={(e) => handleSmoothScroll(e, "#sobre")}>Conheça-nos</a>
@@ -69,7 +69,7 @@ const Hero = () => {
           <Button 
             size="lg"
             variant="outline"
-            className="border-2 border-primary-foreground hover:bg-primary-foreground hover:text-foreground font-body font-semibold text-base sm:text-lg py-6 sm:py-6 w-full sm:w-auto min-w-[200px]"
+            className="border-2 border-primary-foreground hover:bg-primary-foreground hover:text-foreground font-body font-semibold text-base sm:text-lg h-12 sm:h-12 w-full sm:w-auto min-w-[200px]"
             asChild
           >
             <a href="#contato" onClick={(e) => handleSmoothScroll(e, "#contato")}>Fale Conosco</a>
