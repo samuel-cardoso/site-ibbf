@@ -1,6 +1,7 @@
 import { PageTitle } from "@/components/PageTitle";
 import { Crimson_Text, Roboto, Roboto_Mono, Great_Vibes } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -86,6 +87,7 @@ export default function RootLayout({
       <body
         className={`${crimsonText.variable} ${roboto.variable} ${robotoMono.variable} ${greatVibes.variable} antialiased`}
       >
+        <GoogleAnalytics />
         <Toaster />
         <PageTitle />
         {children}

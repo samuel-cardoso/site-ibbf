@@ -97,6 +97,9 @@ Edite o arquivo `.env.local` e configure:
 # URL do site (usado para SEO e sitemap)
 NEXT_PUBLIC_SITE_URL=https://seu-dominio.com
 
+# Google Analytics ID (ex: S-SJE35SKSAH)
+NEXT_PUBLIC_GA_ID=S-SJE35SKSAH
+
 # Email para receber confirmações de presença
 CONFIRMATION_EMAIL=seu-email@exemplo.com
 
