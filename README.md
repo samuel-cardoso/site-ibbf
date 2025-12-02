@@ -94,6 +94,9 @@ cp env.example .env.local
 
 Edite o arquivo `.env.local` e configure:
 ```env
+# URL do site (usado para SEO e sitemap)
+NEXT_PUBLIC_SITE_URL=https://seu-dominio.com
+
 # Email para receber confirmações de presença
 CONFIRMATION_EMAIL=seu-email@exemplo.com
 
