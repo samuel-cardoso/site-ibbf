@@ -186,15 +186,32 @@ O site é totalmente responsivo com breakpoints:
 ## 🔧 Scripts Disponíveis
 
 ```bash
-# Desenvolvimento com Turbopack
+# Desenvolvimento com Turbopack (mais rápido, mas pode ter warnings de HMR)
 npm run dev
 
-# Build de produção
+# Desenvolvimento com Webpack (mais estável, sem warnings de HMR)
+npm run dev:webpack
+
+# Build de produção com Turbopack
 npm run build
+
+# Build de produção com Webpack
+npm run build:webpack
 
 # Iniciar servidor de produção
 npm start
+
+# Limpar cache do Next.js (útil se houver problemas)
+npm run clean
 ```
+
+### ⚠️ Nota sobre Warnings de HMR
+
+Se você estiver vendo erros como `unrecognized HMR message "{"event":"ping"}"`, isso é um bug conhecido do Turbopack no Next.js 15 que não afeta a funcionalidade do site. Você pode:
+
+1. **Ignorar os warnings** - Eles não afetam o funcionamento
+2. **Usar Webpack** - Execute `npm run dev:webpack` em vez de `npm run dev`
+3. **Limpar o cache** - Execute `npm run clean` e reinicie o servidor
 
 ## 🎨 Design System
 
