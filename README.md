@@ -341,28 +341,6 @@ plataforma-ibbf/
 | `RESEND_API_KEY` | API Key do Resend | Não | - |
 | `RESEND_FROM_EMAIL` | Email remetente do Resend | Não | `onboarding@resend.dev` |
 
-## 🚢 Deploy
-
-### Vercel (Recomendado)
-
-1. Conecte seu repositório à Vercel
-2. Configure as variáveis de ambiente no painel da Vercel
-3. O deploy será automático a cada push
-
-### Outras Plataformas
-
-O projeto pode ser deployado em qualquer plataforma que suporte Next.js:
-- Netlify
-- AWS Amplify
-- Railway
-- Render
-
-**Importante**: Certifique-se de configurar todas as variáveis de ambiente na plataforma escolhida.
-
 ## 📝 Licença
 
 Este projeto é privado e pertence à 1ª Igreja Batista Bíblica Fundamentalista de Canoas.
-
-## 🤝 Contribuindo
-
-Este é um projeto privado. Para sugestões ou melhorias, entre em contato com os mantenedores do projeto.
