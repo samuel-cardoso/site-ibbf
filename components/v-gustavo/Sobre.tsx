@@ -1,4 +1,4 @@
-import Carrossel from "@/components/Carrossel";
+import Carrossel from "@/components/v-gustavo/Carrossel";
 
 export default function Sobre() {
   return (

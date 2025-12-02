@@ -173,7 +173,7 @@ export default function InvitePage() {
               </p>
               
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                Venha experimentar a comunhão, adoração e o ensino da Palavra de Deus em um ambiente acolhedor e cheio do amor de Cristo.
+                Venha experimentar a comunhão, adoração e o ensino da Palavra de Deus em um ambiente acolhedor.
               </p>
 
               <div className="mt-8 pt-8 border-t border-primary/20 space-y-4">

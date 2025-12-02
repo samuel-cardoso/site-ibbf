@@ -163,7 +163,7 @@ export function usePageTitle() {
       "#inicio": "Início | " + DEFAULT_TITLE,
       "#sobre": "Sobre | " + DEFAULT_TITLE,
       "#programacao": "Programação | " + DEFAULT_TITLE,
-      "#contato": "Contato | " + DEFAULT_TITLE,
+      "#contato": "Contato | " + DEFAULT_TITLE
     };
 
     // Prioriza o hash da URL se existir
@@ -183,6 +183,7 @@ export function usePageTitle() {
       "/programacao": "Programação | " + DEFAULT_TITLE,
       "/contato": "Contato | " + DEFAULT_TITLE,
       "/convite": "Convite | " + DEFAULT_TITLE,
+      "/no-que-cremos": "No que cremos? | " + DEFAULT_TITLE,
     };
 
     return titleMap[path] || DEFAULT_TITLE;

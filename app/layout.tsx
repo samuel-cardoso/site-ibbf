@@ -1,6 +1,8 @@
 import { PageTitle } from "@/components/PageTitle";
 import { Crimson_Text, Roboto, Roboto_Mono, Great_Vibes } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import type { Metadata } from "next";
 import "./globals.css";
 
 const crimsonText = Crimson_Text({
@@ -30,6 +32,51 @@ const greatVibes = Great_Vibes({
   weight: ["400"],
 });
 
+export const metadata: Metadata = {
+  title: {
+    default: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
+    template: "%s | 1ª Igreja Batista Bíblica Fundamentalista de Canoas"
+  },
+  description: "Igreja Batista Bíblica Fundamentalista localizada em Canoas, RS. Venha conhecer nossa comunidade e participar de nossos cultos e eventos. Escola Bíblica Dominical, Culto de Adoração e Reunião de Oração.",
+  keywords: ["igreja", "batista", "bíblica", "fundamentalista", "Canoas", "RS", "culto", "adoração", "escola bíblica dominical", "reunião de oração"],
+  authors: [{ name: "1ª Igreja Batista Bíblica Fundamentalista de Canoas" }],
+  creator: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
+  publisher: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "/",
+    siteName: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
+    title: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
+    description: "Igreja Batista Bíblica Fundamentalista localizada em Canoas, RS. Venha conhecer nossa comunidade e participar de nossos cultos e eventos.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
+    description: "Igreja Batista Bíblica Fundamentalista localizada em Canoas, RS.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -40,6 +87,7 @@ export default function RootLayout({
       <body
         className={`${crimsonText.variable} ${roboto.variable} ${robotoMono.variable} ${greatVibes.variable} antialiased`}
       >
+        <GoogleAnalytics />
         <Toaster />
         <PageTitle />
         {children}
