@@ -99,6 +99,13 @@ const Footer = () => {
               >
                 LGPD
               </Link>
+              {/* Link No que cremos */}
+              <Link
+                href="/no-que-cremos"
+                className="text-background/80 hover:text-primary transition-colors"
+              >
+                No que cremos?
+              </Link>
             </div>
           </div>
 
