@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
 import { smoothScrollTo } from "@/lib/utils";
+import { TikTokIcon, ThreadsIcon } from "@/lib/consts";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -127,6 +128,27 @@ const Footer = () => {
                 aria-label="YouTube"
               >
                 <Youtube className="h-5 w-5" />
+              </a>
+              <a 
+                href="#" 
+                className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a 
+                href="#" 
+                className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
+                aria-label="TikTok"
+              >
+                <TikTokIcon className="h-5 w-5" />
+              </a>
+              <a 
+                href="#" 
+                className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
+                aria-label="Threads"
+              >
+                <ThreadsIcon className="h-5 w-5" />
               </a>
             </div>
           </div>
