@@ -116,44 +116,49 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://www.facebook.com/profile.php?id=61584577330169" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="Facebook"
+                target="_blank"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="Instagram"
+                target="_blank"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a 
-                href="#" 
+                href="https://www.youtube.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="YouTube"
+                target="_blank"
               >
                 <Youtube className="h-5 w-5" />
               </a>
-              <a 
+              {/* <a 
                 href="#" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
-              </a>
+              </a> */}
               <a 
-                href="#" 
+                href="https://www.tiktok.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="TikTok"
+                target="_blank"
               >
                 <TikTokIcon className="h-5 w-5" />
               </a>
               <a 
-                href="#" 
+                href="https://www.threads.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="Threads"
+                target="_blank"
               >
                 <ThreadsIcon className="h-5 w-5" />
               </a>
