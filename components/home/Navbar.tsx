@@ -17,6 +17,7 @@ const Navbar = () => {
     { name: "Programação", href: "#programacao" },
     { name: "Contato", href: "#contato" },
     { name: "No que cremos?", href: "/no-que-cremos" },
+    { name: "Agenda", href: "/agenda" },
     { name: "Convite", href: "/convite" }
   ];
 
