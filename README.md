@@ -53,6 +53,13 @@ Este projeto utiliza as seguintes tecnologias:
 - **Design Elegante**: Interface com tipografia especial e gradientes
 - **Informações da Igreja**: Endereço e horários de cultos exibidos na página
 
+### 📅 Página de Agenda (`/agenda`)
+- **Google Calendar Integrado**: Calendário completo de eventos da igreja integrado via iframe
+- **Eventos Regulares**: Exibição dos horários fixos de cultos e reuniões
+- **Design Consistente**: Segue os padrões visuais do site com tipografia e cores da igreja
+- **Responsivo**: Calendário adaptado para todos os dispositivos
+- **Configurável**: ID do calendário configurável via variável de ambiente
+
 ### 🔒 Página de Política de Privacidade (`/ldpg`)
 - **LGPD Compliance**: Página com política de privacidade e proteção de dados
 - **Visualizador de PDF**: Exibe o documento de política de privacidade
@@ -148,6 +155,11 @@ RESEND_API_KEY=re_xxxxxxxxxxxxx
 
 # Email remetente (use onboarding@resend.dev para testes)
 RESEND_FROM_EMAIL=Igreja Batista Fundamental <onboarding@resend.dev>
+
+# ID do Google Calendar (opcional, para página de agenda)
+# Para obter: Google Calendar > Configurações do calendário > Compartilhar > Copiar ID
+# Formato: exemplo@gmail.com ou c_xxxxxxxxxxxxx@group.calendar.google.com
+NEXT_PUBLIC_GOOGLE_CALENDAR_ID=seu-calendario@gmail.com
 ```
 
 4. Execute o servidor de desenvolvimento:
@@ -174,6 +186,20 @@ Para habilitar o envio automático de emails de confirmação:
 2. Obtenha seu ID de medição (formato: `G-XXXXXXXXXX` ou `S-XXXXXXXXXX`)
 3. Adicione o ID na variável de ambiente `NEXT_PUBLIC_GA_ID`
 4. O Google Tag será carregado automaticamente em todas as páginas
+
+### 📅 Configuração do Google Calendar
+
+Para exibir eventos no calendário da página `/agenda`:
+
+1. Acesse o [Google Calendar](https://calendar.google.com/)
+2. Crie um calendário ou use um existente
+3. Vá em **Configurações** > **Configurações do calendário**
+4. Role até a seção **Compartilhar com pessoas específicas** ou **Integrar calendário**
+5. Copie o **ID do calendário** (formato: `exemplo@gmail.com` ou `c_xxxxxxxxxxxxx@group.calendar.google.com`)
+6. Adicione o ID na variável de ambiente `NEXT_PUBLIC_GOOGLE_CALENDAR_ID`
+7. Certifique-se de que o calendário está **público** ou configurado para ser visualizado via embed
+
+**Nota**: Se a variável não estiver configurada, a página ainda funcionará, mas exibirá um calendário genérico do Google.
 
 ## 📱 Responsividade
 
@@ -237,6 +263,9 @@ plataforma-ibbf/
 │   │   ├── layout.tsx            # Metadata específica da página
 │   │   └── page.tsx
 │   ├── no-que-cremos/            # Página "No que cremos"
+│   │   ├── layout.tsx            # Metadata específica da página
+│   │   └── page.tsx
+│   ├── agenda/                   # Página de Agenda de Eventos
 │   │   ├── layout.tsx            # Metadata específica da página
 │   │   └── page.tsx
 │   ├── ldpg/                     # Página de Política de Privacidade
@@ -337,6 +366,7 @@ plataforma-ibbf/
 |----------|-----------|-------------|--------|
 | `NEXT_PUBLIC_SITE_URL` | URL do site para SEO e sitemap | Não | `http://localhost:3000` |
 | `NEXT_PUBLIC_GA_ID` | ID do Google Analytics | Não | - |
+| `NEXT_PUBLIC_GOOGLE_CALENDAR_ID` | ID do Google Calendar para página de agenda | Não | - |
 | `CONFIRMATION_EMAIL` | Email para receber confirmações | Não | - |
 | `RESEND_API_KEY` | API Key do Resend | Não | - |
 | `RESEND_FROM_EMAIL` | Email remetente do Resend | Não | `onboarding@resend.dev` |

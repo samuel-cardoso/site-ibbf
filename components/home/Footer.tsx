@@ -106,6 +106,13 @@ const Footer = () => {
               >
                 No que cremos?
               </Link>
+              {/* Link Agenda */}
+              <Link
+                href="/agenda"
+                className="text-background/80 hover:text-primary transition-colors"
+              >
+                Agenda
+              </Link>
             </div>
           </div>
 
