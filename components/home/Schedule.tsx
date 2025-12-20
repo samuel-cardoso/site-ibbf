@@ -22,13 +22,13 @@ const Schedule = () => {
       title: "Culto de Oração",
       day: "Quartas-feiras",
       time: "19:30",
-      description: "Culto de oração e pregação"
+      description: "Culto de oração e pregação."
     },
     {
       icon: Baby,
       title: "Clube Leões de Judá",
       day: "Sábados",
-      time: "14:00",
+      time: "15:00",
       description: "Atividades e estudo bíblico para crianças."
     },
     {
