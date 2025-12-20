@@ -2,6 +2,7 @@ import { PageTitle } from "@/components/PageTitle";
 import { Crimson_Text, Roboto, Roboto_Mono, Great_Vibes } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import StructuredData from "@/components/StructuredData";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -58,11 +59,31 @@ export const metadata: Metadata = {
     siteName: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
     title: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
     description: "Igreja Batista Bíblica Fundamentalista localizada em Canoas, RS. Venha conhecer nossa comunidade e participar de nossos cultos e eventos.",
+    images: [
+      {
+        url: "/assets/logo-web.png",
+        width: 1200,
+        height: 630,
+        alt: "Logo da 1ª Igreja Batista Bíblica Fundamentalista de Canoas",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
     description: "Igreja Batista Bíblica Fundamentalista localizada em Canoas, RS.",
+    images: ["/assets/logo-web.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/assets/logo-web.png", sizes: "32x32", type: "image/png" },
+      { url: "/assets/logo-web.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/assets/logo-web.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
   },
   robots: {
     index: true,
@@ -87,6 +108,7 @@ export default function RootLayout({
       <body
         className={`${crimsonText.variable} ${roboto.variable} ${robotoMono.variable} ${greatVibes.variable} antialiased`}
       >
+        <StructuredData />
         <GoogleAnalytics />
         <Toaster />
         <PageTitle />
