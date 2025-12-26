@@ -76,13 +76,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
       { url: "/icon.png", sizes: "120x120", type: "image/png" },
-      { url: "/assets/logo-web.png", sizes: "32x32", type: "image/png" },
+      { url: "/assets/logo-web.png", sizes: "300x300", type: "image/png" },
     ],
     apple: [
-      { url: "/icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/icon.png", sizes: "120x120", type: "image/png" },
     ],
-    shortcut: "/icon.png",
+    shortcut: "/favicon.ico",
   },
   robots: {
     index: true,

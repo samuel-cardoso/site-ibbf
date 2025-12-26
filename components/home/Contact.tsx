@@ -43,7 +43,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {contactInfo.map((info, index) => (
             <Card key={index} className="text-center border-2 hover:border-primary transition-colors">
               <CardContent className="pt-6">
