@@ -160,6 +160,11 @@ RESEND_FROM_EMAIL=Igreja Batista Fundamental <onboarding@resend.dev>
 # Para obter: Google Calendar > Configurações do calendário > Compartilhar > Copiar ID
 # Formato: exemplo@gmail.com ou c_xxxxxxxxxxxxx@group.calendar.google.com
 NEXT_PUBLIC_GOOGLE_CALENDAR_ID=seu-calendario@gmail.com
+
+# Google Search Console - Código de verificação (opcional)
+# Para obter: Google Search Console > Configurações > Propriedade > Verificação de propriedade
+# Copie apenas o código após content="..." da meta tag
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=DMnglnyYk3qrsf...
 ```
 
 4. Execute o servidor de desenvolvimento:
@@ -200,6 +205,27 @@ Para exibir eventos no calendário da página `/agenda`:
 7. Certifique-se de que o calendário está **público** ou configurado para ser visualizado via embed
 
 **Nota**: Se a variável não estiver configurada, a página ainda funcionará, mas exibirá um calendário genérico do Google.
+
+### 🔍 Configuração do Google Search Console
+
+Para verificar a propriedade do seu site no Google Search Console:
+
+1. Acesse o [Google Search Console](https://search.google.com/search-console/)
+2. Adicione uma propriedade do tipo **"Prefixo do URL"**
+3. Escolha o método de verificação **"Tag HTML"**
+4. Copie o código de verificação (apenas o valor do atributo `content` da meta tag)
+5. Adicione o código na variável de ambiente `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`
+6. Faça o deploy do site ou reinicie o servidor de desenvolvimento
+7. Volte ao Google Search Console e clique em **"Verificar"**
+
+**Exemplo**: Se a meta tag for:
+```html
+<meta name="google-site-verification" content="DMnglnyYk3qrsf1234567890" />
+```
+
+Adicione apenas `DMnglnyYk3qrsf1234567890` na variável de ambiente.
+
+**Nota**: A meta tag será adicionada automaticamente no `<head>` de todas as páginas quando a variável estiver configurada.
 
 ## 📱 Responsividade
 
@@ -367,6 +393,7 @@ plataforma-ibbf/
 | `NEXT_PUBLIC_SITE_URL` | URL do site para SEO e sitemap | Não | `http://localhost:3000` |
 | `NEXT_PUBLIC_GA_ID` | ID do Google Analytics | Não | - |
 | `NEXT_PUBLIC_GOOGLE_CALENDAR_ID` | ID do Google Calendar para página de agenda | Não | - |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Código de verificação do Google Search Console | Não | - |
 | `CONFIRMATION_EMAIL` | Email para receber confirmações | Não | - |
 | `RESEND_API_KEY` | API Key do Resend | Não | - |
 | `RESEND_FROM_EMAIL` | Email remetente do Resend | Não | `onboarding@resend.dev` |
