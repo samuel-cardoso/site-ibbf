@@ -10,12 +10,12 @@ const Contact = () => {
       content: "R. Benjamin Franklin, 73 - Harmonia",
       subContent: "Canoas - RS, CEP 92310-380"
     },
-    {
-      icon: Phone,
-      title: "Telefone",
-      content: "(51) 99130-6543",
-      subContent: "Mande mensagem via WhatsApp"
-    },
+    // {
+    //   icon: Phone,
+    //   title: "Telefone",
+    //   content: "(51) 99130-6543",
+    //   subContent: "Mande mensagem via WhatsApp"
+    // },
     {
       icon: Mail,
       title: "E-mail",
