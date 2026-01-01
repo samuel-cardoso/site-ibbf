@@ -138,14 +138,14 @@ const Footer = () => {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a 
+              {/* <a 
                 href="https://www.youtube.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="YouTube"
                 target="_blank"
               >
                 <Youtube className="h-5 w-5" />
-              </a>
+              </a> */}
               {/* <a 
                 href="#" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
@@ -153,22 +153,22 @@ const Footer = () => {
               >
                 <Linkedin className="h-5 w-5" />
               </a> */}
-              <a 
+              {/* <a 
                 href="https://www.tiktok.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="TikTok"
                 target="_blank"
               >
                 <TikTokIcon className="h-5 w-5" />
-              </a>
-              <a 
+              </a> */}
+              {/* <a 
                 href="https://www.threads.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="Threads"
                 target="_blank"
               >
                 <ThreadsIcon className="h-5 w-5" />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
