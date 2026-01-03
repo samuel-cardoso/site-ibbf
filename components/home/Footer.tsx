@@ -50,6 +50,9 @@ const Footer = () => {
           </div>
 
 
+          {/* Coluna do meio vazia */}
+          <div></div>
+
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Links Rápidos</h4>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 font-body text-sm">
@@ -116,7 +119,8 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
+          {/* Seção de redes sociais comentada - não será usada no momento */}
+          {/* <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Redes Sociais</h4>
             <p className="font-body text-sm text-background/80 mb-4">
               Acompanhe nossas redes sociais e fique por dentro de tudo que acontece!
@@ -138,39 +142,39 @@ const Footer = () => {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              {/* <a 
+              <a 
                 href="https://www.youtube.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="YouTube"
                 target="_blank"
               >
                 <Youtube className="h-5 w-5" />
-              </a> */}
-              {/* <a 
+              </a>
+              <a 
                 href="#" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
-              </a> */}
-              {/* <a 
+              </a>
+              <a 
                 href="https://www.tiktok.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="TikTok"
                 target="_blank"
               >
                 <TikTokIcon className="h-5 w-5" />
-              </a> */}
-              {/* <a 
+              </a>
+              <a 
                 href="https://www.threads.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="Threads"
                 target="_blank"
               >
                 <ThreadsIcon className="h-5 w-5" />
-              </a> */}
+              </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="border-t border-background/20 pt-8 text-center">
