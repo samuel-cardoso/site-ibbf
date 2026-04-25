@@ -49,10 +49,6 @@ const Footer = () => {
             </p>
           </div>
 
-
-          {/* Coluna do meio vazia */}
-          <div></div>
-
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Links Rápidos</h4>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 font-body text-sm">
@@ -120,7 +116,7 @@ const Footer = () => {
           </div>
 
           {/* Seção de redes sociais comentada - não será usada no momento */}
-          {/* <div>
+          <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Redes Sociais</h4>
             <p className="font-body text-sm text-background/80 mb-4">
               Acompanhe nossas redes sociais e fique por dentro de tudo que acontece!
@@ -150,13 +146,13 @@ const Footer = () => {
               >
                 <Youtube className="h-5 w-5" />
               </a>
-              <a 
-                href="#" 
+              {/* <a 
+                href="https://www.linkedin.com/ibbfcanoas/" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
-              </a>
+              </a> */}
               <a 
                 href="https://www.tiktok.com/@ibbfcanoas" 
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
@@ -174,7 +170,7 @@ const Footer = () => {
                 <ThreadsIcon className="h-5 w-5" />
               </a>
             </div>
-          </div> */}
+          </div>
         </div>
 
         <div className="border-t border-background/20 pt-8 text-center">
