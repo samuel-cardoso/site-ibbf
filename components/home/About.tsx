@@ -45,13 +45,12 @@ const About = () => {
 
           <div className="relative">
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
-              <img 
-                src={"/assets/church-building.jpg"} 
+              <img
+                src={"/assets/church-building.jpg"}
                 alt="Fachada da Igreja Batista Fundamental"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 border-4 border-primary rounded-lg -z-10" />
           </div>
         </div>
       </div>
