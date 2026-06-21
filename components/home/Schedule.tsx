@@ -3,20 +3,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { supabase } from "@/lib/supabase";
 
 type Hymn = { id: string; number: number | null; title: string; order: number };
+type ServiceData = { hymns: Hymn[]; date: string | null };
 
-async function fetchNextHymns(labelFragment: string): Promise<Hymn[]> {
+async function fetchNextService(labelFragment: string): Promise<ServiceData> {
   const now = new Date().toISOString();
 
   const { data: service } = await supabase
     .from("services")
-    .select("id")
+    .select("id, starts_at")
     .gt("starts_at", now)
     .ilike("label", `%${labelFragment}%`)
     .order("starts_at", { ascending: true })
     .limit(1)
     .single();
 
-  if (!service) return [];
+  if (!service) return { hymns: [], date: null };
 
   const { data: hymns } = await supabase
     .from("service_hymns")
@@ -24,14 +25,25 @@ async function fetchNextHymns(labelFragment: string): Promise<Hymn[]> {
     .eq("service_id", service.id)
     .order("order", { ascending: true });
 
-  return hymns ?? [];
+  return {
+    hymns: hymns ?? [],
+    date: service.starts_at,
+  };
+}
+
+function formatDate(isoDate: string): string {
+  return new Date(isoDate).toLocaleDateString("pt-BR", {
+    day: "numeric",
+    month: "long",
+    timeZone: "America/Sao_Paulo",
+  });
 }
 
 const Schedule = async () => {
-  const [ebdHymns, adoracaoHymns, oracaoHymns] = await Promise.all([
-    fetchNextHymns("Escola Bíblica"),
-    fetchNextHymns("Culto de Adoração"),
-    fetchNextHymns("Culto de Oração"),
+  const [ebd, adoracao, oracao] = await Promise.all([
+    fetchNextService("Escola Bíblica"),
+    fetchNextService("Culto de Adoração"),
+    fetchNextService("Culto de Oração"),
   ]);
 
   const events = [
@@ -41,7 +53,7 @@ const Schedule = async () => {
       day: "Domingos",
       time: "09:00",
       description: "Estudo bíblico para todas as idades.",
-      hymns: ebdHymns,
+      ...ebd,
     },
     {
       icon: Church,
@@ -49,7 +61,7 @@ const Schedule = async () => {
       day: "Domingos",
       time: "19:30",
       description: "Culto de adoração e pregação.",
-      hymns: adoracaoHymns,
+      ...adoracao,
     },
     {
       icon: Heart,
@@ -57,7 +69,7 @@ const Schedule = async () => {
       day: "Quartas-feiras",
       time: "19:30",
       description: "Culto de oração e pregação.",
-      hymns: oracaoHymns,
+      ...oracao,
     },
   ];
 
@@ -99,9 +111,14 @@ const Schedule = async () => {
                 <p className="font-body text-muted-foreground">{event.description}</p>
                 {event.hymns.length > 0 && (
                   <div className="mt-4 pt-4 border-t">
-                    <p className="font-body text-sm font-semibold text-foreground mb-2">
+                    <p className="font-body text-sm font-semibold text-foreground mb-1">
                       Hinos e Cânticos
                     </p>
+                    {event.date && (
+                      <p className="font-body text-xs text-muted-foreground mb-2">
+                        {formatDate(event.date)}
+                      </p>
+                    )}
                     <ul className="space-y-1">
                       {event.hymns.map((hymn) => (
                         <li
@@ -110,7 +127,7 @@ const Schedule = async () => {
                         >
                           {hymn.number && (
                             <span className="text-xs font-medium text-primary shrink-0">
-                              #{hymn.number}
+                              {hymn.number}
                             </span>
                           )}
                           <span>{hymn.title}</span>
