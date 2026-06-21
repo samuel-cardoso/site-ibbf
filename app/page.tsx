@@ -6,6 +6,7 @@ import Contact from "@/components/home/Contact";
 import Footer from "@/components/home/Footer";
 import ScrollToTop from "@/components/home/ScrollToTop";
 import HashScrollHandler from "@/components/home/HashScrollHandler";
+import AnimatedSection from "@/components/ui/animated-section";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -27,10 +28,18 @@ export default function Home() {
       <HashScrollHandler />
       <Navbar />
       <Hero />
-      <About />
-      <Schedule />
-      <Contact />
-      <Footer />
+      <AnimatedSection>
+        <About />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Schedule />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Contact />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Footer />
+      </AnimatedSection>
       <ScrollToTop />
     </div>
   );

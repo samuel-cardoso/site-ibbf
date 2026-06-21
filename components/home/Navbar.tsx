@@ -1,15 +1,30 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Cross } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { smoothScrollTo } from "@/lib/utils";
+import { motion } from "motion/react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth < 768) return;
+      const currentY = window.scrollY;
+      setHidden(currentY > lastScrollY.current && currentY > 80);
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Início", href: "#inicio" },
@@ -34,7 +49,11 @@ const Navbar = () => {
   const isRoute = (href: string) => href.startsWith("/");
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
+    <motion.nav
+      className="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border"
+      animate={{ y: hidden ? "-100%" : 0 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    >
 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between ">
@@ -145,7 +164,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
