@@ -61,6 +61,8 @@ const Navbar = () => {
 
   const handleLinkClick = (href: string) => {
     setIsOpen(false);
+    setHidden(false);
+    isNavigating.current = true;
   };
 
   const isRoute = (href: string) => href.startsWith("/");

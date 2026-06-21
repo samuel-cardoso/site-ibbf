@@ -38,8 +38,8 @@ const ScrollToTop = () => {
       behavior: "smooth",
     });
 
-    if (window.history && window.history.pushState) {
-      window.history.pushState(null, "", "#inicio");
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", "#inicio");
       window.dispatchEvent(new HashChangeEvent("hashchange"));
     }
   };
