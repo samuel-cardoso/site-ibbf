@@ -1,4 +1,4 @@
-# Plataforma IBBF - Site Institucional
+# Site IBBF - Site Institucional
 
 Site institucional da **1ª Igreja Batista Bíblica Fundamentalista de Canoas**, desenvolvido com Next.js 15 e React 19. Um site moderno, responsivo e acessível para apresentar informações sobre a igreja, programação de cultos e eventos, além de facilitar o contato com a congregação e gerenciar confirmações de presença.
 
@@ -126,7 +126,7 @@ Este projeto utiliza as seguintes tecnologias:
 1. Clone o repositório:
 ```bash
 git clone <url-do-repositorio>
-cd plataforma-ibbf
+cd site-ibbf
 ```
 
 2. Instale as dependências:
@@ -280,7 +280,7 @@ O projeto utiliza um design system customizado com:
 ## 📋 Estrutura de Pastas
 
 ```
-plataforma-ibbf/
+site-ibbf/
 ├── app/                          # Rotas Next.js (App Router)
 │   ├── api/                      # API Routes
 │   │   └── send-confirmation/    # Endpoint de confirmação de presença
