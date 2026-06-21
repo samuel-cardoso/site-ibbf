@@ -1,6 +1,7 @@
 import { MapPin, Mail, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import GoogleMap from "./GoogleMap";
+import AnimatedSection from "@/components/ui/animated-section";
 
 const Contact = () => {
   const contactInfo = [
@@ -26,6 +27,7 @@ const Contact = () => {
 
   return (
     <section id="contato" className="py-6 md:py-34 bg-background m-0">
+      <AnimatedSection>
       <div className="container mx-auto px-4">
 
         <div className="text-center mb-12">
@@ -63,6 +65,7 @@ const Contact = () => {
           height="500px"  
         />
       </div>
+      </AnimatedSection>
     </section>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import { smoothScrollTo } from "@/lib/utils";
+import AnimatedSection from "@/components/ui/animated-section";
 
 const About = () => {
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -9,6 +10,7 @@ const About = () => {
   };
   return (
     <section id="sobre" className="py-6 md:py-34 m-0 bg-background">
+      <AnimatedSection>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -53,6 +55,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      </AnimatedSection>
     </section>
   );
 };

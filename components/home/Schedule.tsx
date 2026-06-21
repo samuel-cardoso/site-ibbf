@@ -1,6 +1,7 @@
 import { Calendar, Clock, GraduationCap, Heart, Church } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/lib/supabase";
+import AnimatedSection from "@/components/ui/animated-section";
 
 type Hymn = { id: string; number: number | null; title: string; order: number };
 type ServiceData = { hymns: Hymn[]; date: string | null };
@@ -78,6 +79,7 @@ const Schedule = async () => {
 
   return (
     <section id="programacao" className="py-6 md:py-34 bg-secondary m-0">
+      <AnimatedSection>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -149,6 +151,7 @@ const Schedule = async () => {
           Os hinos e cânticos podem sofrer alterações.
         </p>
       </div>
+      </AnimatedSection>
     </section>
   );
 };
