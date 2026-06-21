@@ -11,6 +11,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const isNavigating = useRef(false);
+  const navLockTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
@@ -18,12 +20,25 @@ const Navbar = () => {
     const handleScroll = () => {
       if (window.innerWidth < 768) return;
       const currentY = window.scrollY;
+
+      if (isNavigating.current) {
+        lastScrollY.current = currentY;
+        if (navLockTimer.current) clearTimeout(navLockTimer.current);
+        navLockTimer.current = setTimeout(() => {
+          isNavigating.current = false;
+        }, 300);
+        return;
+      }
+
       setHidden(currentY > lastScrollY.current && currentY > 80);
       lastScrollY.current = currentY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (navLockTimer.current) clearTimeout(navLockTimer.current);
+    };
   }, []);
 
   const navLinks = [
@@ -38,6 +53,8 @@ const Navbar = () => {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    setHidden(false);
+    isNavigating.current = true;
     smoothScrollTo(href);
     setIsOpen(false);
   };
@@ -74,41 +91,56 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => {
-              if (isRoute(link.href)) {
+          <div className="hidden md:flex items-center space-x-6">
+            {navLinks.map((link, index) => {
+              const isActive = isRoute(link.href) && pathname === link.href;
+              const activeClass = isActive
+                ? "text-primary border-b-2 border-primary pb-0.5"
+                : "text-foreground hover:text-primary";
+              const separator = index === 4;
+
+              const element = (() => {
+                if (isRoute(link.href)) {
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => handleLinkClick(link.href)}
+                      className={`font-body text-sm font-medium transition-colors ${activeClass}`}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                }
+                if (!isHomePage) {
+                  return (
+                    <Link
+                      key={link.name}
+                      href={`/${link.href}`}
+                      onClick={() => handleLinkClick(link.href)}
+                      className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                }
                 return (
-                  <Link
+                  <a
                     key={link.name}
                     href={link.href}
-                    onClick={() => handleLinkClick(link.href)}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
                     className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 );
-              }
-              if (!isHomePage) {
-                return (
-                  <Link
-                    key={link.name}
-                    href={`/${link.href}`}
-                    onClick={() => handleLinkClick(link.href)}
-                    className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                );
-              }
+              })();
+
               return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleSmoothScroll(e, link.href)}
-                  className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </a>
+                <div key={link.name} className="flex items-center gap-6">
+                  {separator && <span className="h-4 w-px bg-border" />}
+                  {element}
+                </div>
               );
             })}
           </div>
@@ -123,15 +155,36 @@ const Navbar = () => {
 
         {isOpen && (
           <div className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => {
+            <div className="flex flex-col space-y-1">
+              {navLinks.map((link, index) => {
+                const isActive = isRoute(link.href) && pathname === link.href;
+                const baseClass = "font-body text-sm font-medium transition-colors px-2 py-2 rounded";
+                const activeClass = isActive
+                  ? "text-primary font-semibold bg-primary/5"
+                  : "text-foreground hover:text-primary hover:bg-primary/5";
+
+                if (index === 4) {
+                  return (
+                    <div key={link.name}>
+                      <div className="border-t border-border my-2" />
+                      <Link
+                        href={link.href}
+                        onClick={() => handleLinkClick(link.href)}
+                        className={`${baseClass} ${activeClass} block`}
+                      >
+                        {link.name}
+                      </Link>
+                    </div>
+                  );
+                }
+
                 if (isRoute(link.href)) {
                   return (
                     <Link
                       key={link.name}
                       href={link.href}
                       onClick={() => handleLinkClick(link.href)}
-                      className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors px-2 py-2"
+                      className={`${baseClass} ${activeClass} block`}
                     >
                       {link.name}
                     </Link>
@@ -143,7 +196,7 @@ const Navbar = () => {
                       key={link.name}
                       href={`/${link.href}`}
                       onClick={() => handleLinkClick(link.href)}
-                      className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors px-2 py-2"
+                      className={`${baseClass} text-foreground hover:text-primary hover:bg-primary/5 block`}
                     >
                       {link.name}
                     </Link>
@@ -154,7 +207,7 @@ const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleSmoothScroll(e, link.href)}
-                    className="font-body text-sm font-medium text-foreground hover:text-primary transition-colors px-2 py-2"
+                    className={`${baseClass} text-foreground hover:text-primary hover:bg-primary/5 block`}
                   >
                     {link.name}
                   </a>
