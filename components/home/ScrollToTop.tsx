@@ -37,11 +37,6 @@ const ScrollToTop = () => {
       top: 0,
       behavior: "smooth",
     });
-
-    if (window.history && window.history.replaceState) {
-      window.history.replaceState(null, "", "#inicio");
-      window.dispatchEvent(new HashChangeEvent("hashchange"));
-    }
   };
 
   if (!isVisible) return null;

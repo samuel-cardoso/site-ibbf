@@ -37,11 +37,6 @@ export function smoothScrollTo(href: string, offset?: number) {
         top: Math.max(0, targetPosition),
         behavior: "smooth"
       });
-
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, "", href);
-        window.dispatchEvent(new HashChangeEvent("hashchange"));
-      }
     });
   }
 }
