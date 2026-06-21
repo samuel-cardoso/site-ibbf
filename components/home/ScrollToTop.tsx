@@ -8,20 +8,18 @@ const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Observa a seção Hero para detectar quando sair dela
     const heroSection = document.getElementById("inicio");
-    
+
     if (!heroSection) return;
 
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.1, // Quando menos de 10% da seção estiver visível
+      threshold: 0.1,
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        // Se a seção Hero não estiver visível, mostra o botão
         setIsVisible(!entry.isIntersecting);
       });
     };
@@ -39,8 +37,7 @@ const ScrollToTop = () => {
       top: 0,
       behavior: "smooth",
     });
-    
-    // Atualiza o hash na URL para o topo
+
     if (window.history && window.history.pushState) {
       window.history.pushState(null, "", "#inicio");
       window.dispatchEvent(new HashChangeEvent("hashchange"));
@@ -61,4 +58,3 @@ const ScrollToTop = () => {
 };
 
 export default ScrollToTop;
-

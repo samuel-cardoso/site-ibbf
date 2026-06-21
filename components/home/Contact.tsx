@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Mail, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import GoogleMap from "./GoogleMap";
 
@@ -10,12 +10,6 @@ const Contact = () => {
       content: "R. Benjamin Franklin, 73 - Harmonia",
       subContent: "Canoas - RS, CEP 92310-380"
     },
-    // {
-    //   icon: Phone,
-    //   title: "Telefone",
-    //   content: "(51) 99130-6543",
-    //   subContent: "Mande mensagem via WhatsApp"
-    // },
     {
       icon: Mail,
       title: "E-mail",

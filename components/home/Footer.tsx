@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import { smoothScrollTo } from "@/lib/utils";
 import { TikTokIcon, ThreadsIcon } from "@/lib/consts";
 
@@ -19,7 +19,7 @@ const Footer = () => {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href); // Usa altura dinâmica do navbar
+    smoothScrollTo(href);
   };
 
   return (
@@ -29,9 +29,9 @@ const Footer = () => {
 
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="assets/logo-igreja-branca.png" 
-                alt="Logo" 
+              <img
+                src="assets/logo-igreja-branca.png"
+                alt="Logo"
                 className="object-contain w-10"
               />
               <div>
@@ -44,7 +44,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="font-body text-sm text-background/80">
-              Uma igreja comprometida com a pregação fiel da Palavra de Deus e a 
+              Uma igreja comprometida com a pregação fiel da Palavra de Deus e a
               comunhão dos santos.
             </p>
           </div>
@@ -75,7 +75,6 @@ const Footer = () => {
                   </Link>
                 );
               })}
-              {/* Link Convite na segunda coluna */}
               {isHomePage ? (
                 <Link
                   href="/convite"
@@ -91,21 +90,18 @@ const Footer = () => {
                   Convite
                 </Link>
               )}
-              {/* Link LGPD */}
               <Link
                 href="/ldpg"
                 className="text-background/80 hover:text-primary transition-colors"
               >
                 LGPD
               </Link>
-              {/* Link No que cremos */}
               <Link
                 href="/no-que-cremos"
                 className="text-background/80 hover:text-primary transition-colors"
               >
                 No que cremos?
               </Link>
-              {/* Link Agenda */}
               <Link
                 href="/agenda"
                 className="text-background/80 hover:text-primary transition-colors"
@@ -115,54 +111,46 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Seção de redes sociais comentada - não será usada no momento */}
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">Redes Sociais</h4>
             <p className="font-body text-sm text-background/80 mb-4">
               Acompanhe nossas redes sociais e fique por dentro de tudo que acontece!
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="https://www.facebook.com/profile.php?id=61584577330169" 
+              <a
+                href="https://www.facebook.com/profile.php?id=61584577330169"
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="Facebook"
                 target="_blank"
               >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.instagram.com/ibbfcanoas" 
+              <a
+                href="https://www.instagram.com/ibbfcanoas"
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="Instagram"
                 target="_blank"
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.youtube.com/@ibbfcanoas" 
+              <a
+                href="https://www.youtube.com/@ibbfcanoas"
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="YouTube"
                 target="_blank"
               >
                 <Youtube className="h-5 w-5" />
               </a>
-              {/* <a 
-                href="https://www.linkedin.com/ibbfcanoas/" 
-                className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a> */}
-              <a 
-                href="https://www.tiktok.com/@ibbfcanoas" 
+              <a
+                href="https://www.tiktok.com/@ibbfcanoas"
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="TikTok"
                 target="_blank"
               >
                 <TikTokIcon className="h-5 w-5" />
               </a>
-              <a 
-                href="https://www.threads.com/@ibbfcanoas" 
+              <a
+                href="https://www.threads.com/@ibbfcanoas"
                 className="w-10 h-10 bg-background/10 hover:bg-primary rounded-full flex items-center justify-center transition-colors"
                 aria-label="Threads"
                 target="_blank"

@@ -19,7 +19,6 @@ export default function Sobre() {
         <button className="w-40 mt-5 m-auto md:m-0 hover:cursor-pointer text-white p-4 rounded bg-blue-500 hover:bg-blue-600">Saiba Mais</button>
       </section>
 
-      {/* carrossel */}
       <div className="bg-gray-300 rounded-lg shadow-lg flex justify-center items-center lg:max-w-lg w-full h-70">
         <Carrossel/>
       </div>

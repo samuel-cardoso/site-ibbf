@@ -28,20 +28,17 @@ export function usePageTitle() {
       setHash(currentHash);
     };
 
-    // Atualiza o hash inicial
     updateHash();
-    setVisibleSection(""); // Reset quando mudar de página
+    setVisibleSection("");
 
     const handleHashChange = () => {
       updateHash();
     };
 
-    // Detecta qual seção está visível usando Intersection Observer
     let observer: IntersectionObserver | null = null;
     let handleScroll: (() => void) | null = null;
 
     if (pathname === "/") {
-      // Função para verificar qual seção está mais visível no viewport
       const checkVisibleSection = () => {
         const sections = ["inicio", "sobre", "programacao", "contato"];
         const viewportHeight = window.innerHeight;
@@ -70,14 +67,12 @@ export function usePageTitle() {
         }
       };
 
-      // Verifica imediatamente
       checkVisibleSection();
 
-      // Aguarda um pouco para garantir que os elementos estejam no DOM
       const setupObserver = () => {
         const observerOptions = {
           root: null,
-          rootMargin: `-${100}px 0px -50% 0px`, // Considera a navbar fixa
+          rootMargin: `-${100}px 0px -50% 0px`,
           threshold: [0, 0.1, 0.3, 0.5, 1],
         };
 
@@ -89,7 +84,6 @@ export function usePageTitle() {
             if (!id) return;
 
             if (entry.isIntersecting) {
-              // Calcula a porcentagem visível
               const rect = entry.boundingClientRect;
               const viewportHeight = window.innerHeight;
               const navbarHeight = 100;
@@ -97,7 +91,7 @@ export function usePageTitle() {
               const visibleBottom = Math.min(rect.bottom, viewportHeight);
               const visibleHeight = Math.max(0, visibleBottom - visibleTop);
               const visibleRatio = visibleHeight / rect.height;
-              
+
               if (visibleRatio > 0.3) {
                 visibleSections.set(`#${id}`, visibleRatio);
               }
@@ -106,7 +100,6 @@ export function usePageTitle() {
             }
           });
 
-          // Encontra a seção mais visível
           if (visibleSections.size > 0) {
             const mostVisible = Array.from(visibleSections.entries()).sort(
               (a, b) => b[1] - a[1]
@@ -117,7 +110,6 @@ export function usePageTitle() {
 
         observer = new IntersectionObserver(observerCallback, observerOptions);
 
-        // Observa todas as seções principais
         const sections = ["inicio", "sobre", "programacao", "contato"];
         sections.forEach((sectionId) => {
           const element = document.getElementById(sectionId);
@@ -127,15 +119,13 @@ export function usePageTitle() {
         });
       };
 
-      // Aguarda o próximo frame para garantir que o DOM está pronto
       requestAnimationFrame(() => {
         setTimeout(() => {
           setupObserver();
-          checkVisibleSection(); // Verifica novamente após setup
+          checkVisibleSection();
         }, 100);
       });
 
-      // Também verifica no scroll
       handleScroll = () => {
         checkVisibleSection();
       };
@@ -143,7 +133,6 @@ export function usePageTitle() {
     }
 
     window.addEventListener("hashchange", handleHashChange);
-    // Também escuta mudanças no scroll para atualizar o hash
     window.addEventListener("scroll", handleHashChange, { passive: true });
 
     return () => {
@@ -166,17 +155,14 @@ export function usePageTitle() {
       "#contato": "Contato | " + DEFAULT_TITLE
     };
 
-    // Prioriza o hash da URL se existir
     if (currentHash && hashMap[currentHash]) {
       return hashMap[currentHash];
     }
 
-    // Se não houver hash, usa a seção visível (apenas na home page)
     if (path === "/" && currentVisibleSection && hashMap[currentVisibleSection]) {
       return hashMap[currentVisibleSection];
     }
 
-    // Quando houver novas páginas nesta aplicação, será necessário alterar as informações abaixo para que fiquem de acordo com as atualizações.
     const titleMap: Record<string, string> = {
       "/": "Início | " + DEFAULT_TITLE,
       "/sobre": "Sobre | " + DEFAULT_TITLE,

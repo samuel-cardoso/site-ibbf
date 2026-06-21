@@ -23,12 +23,12 @@ const Navbar = () => {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href); // Usa altura dinâmica do navbar
-    setIsOpen(false); // Fecha o menu mobile se estiver aberto
+    smoothScrollTo(href);
+    setIsOpen(false);
   };
 
   const handleLinkClick = (href: string) => {
-    setIsOpen(false); // Fecha o menu mobile
+    setIsOpen(false);
   };
 
   const isRoute = (href: string) => href.startsWith("/");
@@ -40,9 +40,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between ">
 
           <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity group">
-            <img 
-              src="assets/logo-igreja.png" 
-              alt="Logo" 
+            <img
+              src="assets/logo-igreja.png"
+              alt="Logo"
               className="object-contain w-14"
             />
             <div>
@@ -69,7 +69,6 @@ const Navbar = () => {
                   </Link>
                 );
               }
-              // Links de seção - se não estiver na home, navega para /#secao
               if (!isHomePage) {
                 return (
                   <Link
@@ -119,7 +118,6 @@ const Navbar = () => {
                     </Link>
                   );
                 }
-                // Links de seção - se não estiver na home, navega para /#secao
                 if (!isHomePage) {
                   return (
                     <Link

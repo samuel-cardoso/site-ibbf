@@ -10,7 +10,7 @@ export default function CalendarPage() {
 
 	useEffect(() => {
 		const checkMobile = () => {
-			setIsMobile(window.innerWidth < 768); // md breakpoint
+			setIsMobile(window.innerWidth < 768);
 		};
 
 		checkMobile();
@@ -19,10 +19,8 @@ export default function CalendarPage() {
 		return () => window.removeEventListener('resize', checkMobile);
 	}, []);
 
-	// URL base do calendário
 	const baseUrl = `https://calendar.google.com/calendar/embed?src=${calendarId}&ctz=America%2FSao_Paulo`;
-	
-	// No mobile, usa modo AGENDA (lista), no desktop usa o padrão (mês)
+
 	const calendarUrl = isMobile 
 		? `${baseUrl}&mode=AGENDA`
 		: baseUrl;

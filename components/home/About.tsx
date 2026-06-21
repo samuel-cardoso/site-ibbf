@@ -5,13 +5,12 @@ import { smoothScrollTo } from "@/lib/utils";
 const About = () => {
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href); // Usa altura dinâmica do navbar
+    smoothScrollTo(href);
   };
   return (
     <section id="sobre" className="py-6 md:py-34 m-0 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
           <div>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
               Sobre Nós
@@ -42,7 +41,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* Image */}
           <div className="relative">
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
               <img 

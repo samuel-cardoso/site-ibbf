@@ -8,7 +8,6 @@ export default function Contato() {
       id="contato"
       className="flex flex-col md:flex-row p-2 gap-5 justify-center text-gray-700"
     >
-      {/* Info Contato + Redes sociais */}
       <section className="flex flex-col w-full md:w-auto items-center space-y-5">
         <div>
           <h1 className="text-xl md:text-2xl text-center font-semibold">
@@ -29,7 +28,6 @@ export default function Contato() {
         <p>
           <strong>Redes Sociais:</strong>
         </p>
-        {/* TODO: Preencher href whatsapp */}
         <div className="flex h-10 md:h-15 gap-3 justify-start">
           <a target="_blank" href="https://wa.me/" title="Whatsapp">
             <img
@@ -63,10 +61,8 @@ export default function Contato() {
         </div>
       </section>
 
-      {/* Formulário */}
       <div className="flex flex-col items-center">
         <form className="w-full max-w-sm my-auto mx-10">
-          {/* Nome */}
           <label htmlFor="Name" className="relative">
             <input
               type="text"
@@ -80,7 +76,6 @@ export default function Contato() {
             </span>
           </label>
 
-          {/* Email */}
           <label htmlFor="Email" className="relative">
             <input
               type="email"
@@ -94,7 +89,6 @@ export default function Contato() {
             </span>
           </label>
 
-          {/* Mensagem */}
           <label htmlFor="Message">
             <span className="text-sm font-medium text-gray-700">Conteúdo</span>
             <textarea
@@ -105,7 +99,6 @@ export default function Contato() {
             ></textarea>
           </label>
 
-          {/* TODO: Implementar botão enviar */}
           <button className="bg-blue-600 hover:bg-blue-700 hover:cursor-pointer mt-2 transition text-white p-3 rounded-md">
             Enviar
           </button>

@@ -1,6 +1,5 @@
 import React from "react";
 
-// Componente SVG para o ícone do TikTok
 export const TikTokIcon = ({ className }: { className?: string }): React.ReactElement => {
   return React.createElement(
     "svg",
@@ -16,7 +15,6 @@ export const TikTokIcon = ({ className }: { className?: string }): React.ReactEl
   );
 };
 
-// Componente SVG para o ícone do Threads
 export const ThreadsIcon = ({ className }: { className?: string }): React.ReactElement => {
   return React.createElement(
     "svg",

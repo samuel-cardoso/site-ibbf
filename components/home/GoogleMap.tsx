@@ -8,11 +8,8 @@ const GoogleMap = ({
   className = "",
   apiKey 
 }: GoogleMapProps) => {
-  // Codifica o endereço para URL
   const encodedAddress = encodeURIComponent(address);
-  
-  // Se tiver API key, usa o Embed API (recomendado para produção)
-  // Caso contrário, usa o método alternativo de busca
+
   const mapUrl = apiKey
     ? `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedAddress}`
     : `https://www.google.com/maps?q=${encodedAddress}&output=embed`;

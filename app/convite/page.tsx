@@ -52,7 +52,6 @@ export default function InvitePage() {
   const [pageUrl, setPageUrl] = useState("");
 
   useEffect(() => {
-    // Garante que window está disponível (apenas no cliente)
     if (typeof window !== "undefined") {
       setPageUrl(window.location.href);
     }
@@ -69,20 +68,17 @@ export default function InvitePage() {
 
   const numberOfPeople = form.watch("numberOfPeople");
 
-  // Atualiza os campos de nome quando o número de pessoas muda
   useEffect(() => {
     const numPeople = parseInt(numberOfPeople) || 1;
     const currentNames = form.getValues("names") || [];
-    
+
     if (numPeople > currentNames.length) {
-      // Adiciona campos se aumentou
       const newNames = [...currentNames];
       for (let i = currentNames.length; i < numPeople; i++) {
         newNames.push({ name: "" });
       }
       form.setValue("names", newNames);
     } else if (numPeople < currentNames.length) {
-      // Remove campos se diminuiu
       form.setValue("names", currentNames.slice(0, numPeople));
     }
   }, [numberOfPeople, form]);
@@ -108,7 +104,7 @@ export default function InvitePage() {
 
   const onSubmit = async (data: ConfirmationFormData) => {
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch("/api/send-confirmation", {
         method: "POST",
@@ -116,7 +112,7 @@ export default function InvitePage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          contact: unmaskPhone(data.contact), // Remove máscara antes de enviar
+          contact: unmaskPhone(data.contact),
           numberOfPeople: data.numberOfPeople,
           names: data.names.map(n => n.name),
         }),
@@ -133,7 +129,7 @@ export default function InvitePage() {
       toast.success("Confirmação recebida!", {
         description: `Obrigado, ${firstName}! Sua presença foi confirmada para ${data.numberOfPeople} pessoa(s).`,
       });
-      
+
       form.reset({
         contact: "",
         numberOfPeople: "1",
@@ -152,7 +148,7 @@ export default function InvitePage() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
+
       <section className="relative min-h-[calc(100vh-8rem)] pt-32 pb-16 px-6 bg-gradient-to-br from-background via-secondary to-background">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center space-y-8">
@@ -160,18 +156,18 @@ export default function InvitePage() {
             <h1 className="font-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary mb-6 leading-relaxed">
               Você está convidado
             </h1>
-            
+
             <p className="font-heading text-xl md:text-2xl lg:text-3xl text-foreground italic">
               Para celebrar conosco a presença de Deus
             </p>
-            
+
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto my-8"></div>
-            
+
             <div className="max-w-2xl mx-auto space-y-6">
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
                 É com grande alegria que convidamos você e sua família para participar de nossos cultos e eventos especiais.
               </p>
-              
+
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
                 Venha experimentar a comunhão, adoração e o ensino da Palavra de Deus em um ambiente acolhedor.
               </p>
@@ -223,8 +219,8 @@ export default function InvitePage() {
                         <FormItem>
                           <FormLabel className="font-heading">Telefone ou WhatsApp</FormLabel>
                           <FormControl>
-                            <Input 
-                              placeholder="(00) 00000-0000" 
+                            <Input
+                              placeholder="(00) 00000-0000"
                               {...field}
                               onChange={(e) => {
                                 const masked = maskPhone(e.target.value);
@@ -246,11 +242,11 @@ export default function InvitePage() {
                         <FormItem>
                           <FormLabel className="font-heading">Número de pessoas</FormLabel>
                           <FormControl>
-                            <Input 
-                              type="number" 
-                              min="1" 
+                            <Input
+                              type="number"
+                              min="1"
                               max="50"
-                              placeholder="1" 
+                              placeholder="1"
                               {...field}
                               className="font-body"
                             />
@@ -260,7 +256,6 @@ export default function InvitePage() {
                       )}
                     />
 
-                    {/* Campos dinâmicos de nomes */}
                     <div className="space-y-4">
                       {form.watch("names")?.map((_, index) => (
                         <FormField
@@ -273,11 +268,10 @@ export default function InvitePage() {
                                 Nome {index + 1} {index === 0 && "(Responsável)"}
                               </FormLabel>
                               <FormControl>
-                                <Input 
+                                <Input
                                   placeholder={`Digite o nome da pessoa ${index + 1}`}
                                   {...field}
                                   onChange={(e) => {
-                                    // Remove números do input
                                     const valueWithoutNumbers = e.target.value.replace(/\d/g, "");
                                     field.onChange(valueWithoutNumbers);
                                   }}
@@ -291,8 +285,8 @@ export default function InvitePage() {
                       ))}
                     </div>
 
-                    <Button 
-                      type="submit" 
+                    <Button
+                      type="submit"
                       className="w-full font-body font-semibold cursor-pointer"
                       size="lg"
                       disabled={isSubmitting}
@@ -304,12 +298,11 @@ export default function InvitePage() {
               </div>
             </div>
 
-            {/* Share Section */}
             <div className="mt-16">
               <p className="font-body text-lg text-foreground mb-8 max-w-xl mx-auto">
                 Convide seus amigos e familiares para conhecer nossa comunidade
               </p>
-              
+
               <div className="flex flex-wrap justify-center gap-4">
                 <Button
                   onClick={handleWhatsAppShare}
@@ -319,7 +312,7 @@ export default function InvitePage() {
                   <Share2 className="h-5 w-5" />
                   Compartilhar no WhatsApp
                 </Button>
-                
+
                 <Button
                   onClick={handleCopyLink}
                   size="lg"
@@ -339,4 +332,3 @@ export default function InvitePage() {
     </div>
   );
 }
-

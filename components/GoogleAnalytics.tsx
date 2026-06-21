@@ -9,7 +9,6 @@ export default function GoogleAnalytics() {
 
   return (
     <>
-      {/* Scripts no head para verificação do Search Console */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         strategy="beforeInteractive"
