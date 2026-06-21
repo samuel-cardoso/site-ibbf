@@ -53,6 +53,7 @@ const Schedule = async () => {
       day: "Domingos",
       time: "09:00",
       description: "Estudo bíblico para todas as idades.",
+      hymnsLabel: "Hinos",
       ...ebd,
     },
     {
@@ -61,6 +62,7 @@ const Schedule = async () => {
       day: "Domingos",
       time: "19:30",
       description: "Culto de adoração e pregação.",
+      hymnsLabel: "Hinos e Cânticos",
       ...adoracao,
     },
     {
@@ -69,6 +71,7 @@ const Schedule = async () => {
       day: "Quartas-feiras",
       time: "19:30",
       description: "Culto de oração e pregação.",
+      hymnsLabel: "Hinos",
       ...oracao,
     },
   ];
@@ -111,14 +114,16 @@ const Schedule = async () => {
                 <p className="font-body text-muted-foreground">{event.description}</p>
                 {event.hymns.length > 0 && (
                   <div className="mt-4 pt-4 border-t">
-                    <p className="font-body text-sm font-semibold text-foreground mb-1">
-                      Hinos e Cânticos
-                    </p>
-                    {event.date && (
-                      <p className="font-body text-xs text-muted-foreground mb-2">
-                        {formatDate(event.date)}
+                    <div className="flex items-baseline gap-2 mb-2">
+                      <p className="font-body text-sm font-semibold text-foreground">
+                        {event.hymnsLabel}
                       </p>
-                    )}
+                      {event.date && (
+                        <p className="font-body text-xs text-muted-foreground">
+                          · {formatDate(event.date)}
+                        </p>
+                      )}
+                    </div>
                     <ul className="space-y-1">
                       {event.hymns.map((hymn) => (
                         <li
@@ -140,6 +145,9 @@ const Schedule = async () => {
             </Card>
           ))}
         </div>
+        <p className="font-body text-sm text-muted-foreground text-center mt-8">
+          Os hinos e cânticos podem sofrer alterações.
+        </p>
       </div>
     </section>
   );
