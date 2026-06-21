@@ -1,62 +1,75 @@
-import { Calendar, Clock, Users, GraduationCap, Heart, Baby, Mic2, Church } from "lucide-react";
+import { Calendar, Clock, GraduationCap, Heart, Church } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { supabase } from "@/lib/supabase";
 
-const Schedule = () => {
+type Hymn = { id: string; number: number | null; title: string; order: number };
+
+async function fetchNextHymns(labelFragment: string): Promise<Hymn[]> {
+  const now = new Date().toISOString();
+
+  const { data: service } = await supabase
+    .from("services")
+    .select("id")
+    .gt("starts_at", now)
+    .ilike("label", `%${labelFragment}%`)
+    .order("starts_at", { ascending: true })
+    .limit(1)
+    .single();
+
+  if (!service) return [];
+
+  const { data: hymns } = await supabase
+    .from("service_hymns")
+    .select("id, number, title, order")
+    .eq("service_id", service.id)
+    .order("order", { ascending: true });
+
+  return hymns ?? [];
+}
+
+const Schedule = async () => {
+  const [ebdHymns, adoracaoHymns, oracaoHymns] = await Promise.all([
+    fetchNextHymns("Escola Bíblica"),
+    fetchNextHymns("Culto de Adoração"),
+    fetchNextHymns("Culto de Oração"),
+  ]);
+
   const events = [
     {
       icon: GraduationCap,
       title: "Escola Bíblica Dominical",
       day: "Domingos",
       time: "09:00",
-      description: "Estudo bíblico para todas as idades."
+      description: "Estudo bíblico para todas as idades.",
+      hymns: ebdHymns,
     },
     {
       icon: Church,
       title: "Culto de Adoração",
       day: "Domingos",
       time: "19:30",
-      description: "Culto de adoração e pregação."
+      description: "Culto de adoração e pregação.",
+      hymns: adoracaoHymns,
     },
     {
       icon: Heart,
       title: "Culto de Oração",
       day: "Quartas-feiras",
       time: "19:30",
-      description: "Culto de oração e pregação."
+      description: "Culto de oração e pregação.",
+      hymns: oracaoHymns,
     },
-    {
-      icon: Baby,
-      title: "Clube Leões de Judá",
-      day: "Sábados",
-      time: "15:00",
-      description: "Atividades e estudo bíblico para crianças."
-    },
-    {
-      icon: Users,
-      title: "Reunião de Jovens",
-      day: "Sábados",
-      time: "15:00",
-      description: "Confraternização, louvor e estudo bíblico para jovens."
-    },
-    {
-      icon: Mic2,
-      title: "Ensaio de Música",
-      day: "Domingos",
-      time: "17:00",
-      description: "Preparação para o culto de adoração."
-    }
   ];
 
   return (
     <section id="programacao" className="py-6 md:py-34 bg-secondary m-0">
       <div className="container mx-auto px-4">
-
         <div className="text-center mb-12">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
             Nossa Programação
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-            Oferecemos diversos momentos de comunhão, adoração e ensino bíblico. 
+            Oferecemos diversos momentos de comunhão, adoração e ensino bíblico.
             Você é bem-vindo em todos eles!
           </p>
         </div>
@@ -69,9 +82,7 @@ const Schedule = () => {
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <event.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <div>
-                    <CardTitle className="font-heading text-xl">{event.title}</CardTitle>
-                  </div>
+                  <CardTitle className="font-heading text-xl">{event.title}</CardTitle>
                 </div>
                 <CardDescription className="font-body flex items-center gap-4 text-base">
                   <span className="flex items-center gap-1">
@@ -85,9 +96,29 @@ const Schedule = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="font-body text-muted-foreground">
-                  {event.description}
-                </p>
+                <p className="font-body text-muted-foreground">{event.description}</p>
+                {event.hymns.length > 0 && (
+                  <div className="mt-4 pt-4 border-t">
+                    <p className="font-body text-sm font-semibold text-foreground mb-2">
+                      Hinos e Cânticos
+                    </p>
+                    <ul className="space-y-1">
+                      {event.hymns.map((hymn) => (
+                        <li
+                          key={hymn.id}
+                          className="font-body text-sm text-muted-foreground flex items-baseline gap-2"
+                        >
+                          {hymn.number && (
+                            <span className="text-xs font-medium text-primary shrink-0">
+                              #{hymn.number}
+                            </span>
+                          )}
+                          <span>{hymn.title}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}
