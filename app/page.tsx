@@ -2,11 +2,14 @@ import Navbar from "@/components/home/Navbar";
 import Hero from "@/components/home/Hero";
 import About from "@/components/home/About";
 import Schedule from "@/components/home/Schedule";
+import Hymns from "@/components/home/Hymns";
 import Contact from "@/components/home/Contact";
 import Footer from "@/components/home/Footer";
 import ScrollToTop from "@/components/home/ScrollToTop";
 import HashScrollHandler from "@/components/home/HashScrollHandler";
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "1ª Igreja Batista Bíblica Fundamentalista de Canoas",
@@ -27,6 +30,7 @@ export default function Home() {
       <Hero />
       <About />
       <Schedule />
+      <Hymns />
       <Contact />
       <Footer />
       <ScrollToTop />
