@@ -1,5 +1,4 @@
-import { Calendar, Clock, GraduationCap, Heart, Church } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BookOpen, HandHeart, Church } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import AnimatedSection from "@/components/ui/animated-section";
 
@@ -49,7 +48,7 @@ const Schedule = async () => {
 
   const events = [
     {
-      icon: GraduationCap,
+      icon: BookOpen,
       title: "Escola Bíblica Dominical",
       day: "Domingos",
       time: "09:00",
@@ -67,7 +66,7 @@ const Schedule = async () => {
       ...adoracao,
     },
     {
-      icon: Heart,
+      icon: HandHeart,
       title: "Culto de Oração",
       day: "Quartas-feiras",
       time: "19:30",
@@ -81,70 +80,61 @@ const Schedule = async () => {
     <section id="programacao" className="py-6 md:py-34 bg-secondary m-0">
       <AnimatedSection>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="mb-12 md:mb-16 max-w-2xl">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
             Nossa Programação
           </h2>
-          <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="font-body text-lg text-muted-foreground">
             Oferecemos diversos momentos de comunhão, adoração e ensino bíblico.
             Você é bem-vindo em todos eles!
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-px bg-border border border-border rounded-lg overflow-hidden">
           {events.map((event, index) => (
-            <Card key={index} className="border-2 hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <event.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="font-heading text-xl">{event.title}</CardTitle>
-                </div>
-                <CardDescription className="font-body flex items-center gap-4 text-base">
-                  <span className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
-                    {event.day}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="h-4 w-4" />
-                    {event.time}
-                  </span>
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="font-body text-muted-foreground">{event.description}</p>
-                {event.hymns.length > 0 && (
-                  <div className="mt-4 pt-4 border-t">
-                    <div className="flex items-baseline gap-2 mb-2">
-                      <p className="font-body text-sm font-semibold text-foreground">
-                        {event.hymnsLabel}
+            <div key={index} className="bg-background p-6 md:p-8 flex flex-col">
+              <div className="flex items-center gap-2 text-primary mb-4">
+                <event.icon className="h-5 w-5" strokeWidth={1.75} />
+                <span className="font-body text-xs font-semibold uppercase tracking-wider">
+                  {event.day} · {event.time}
+                </span>
+              </div>
+              <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
+                {event.title}
+              </h3>
+              <p className="font-body text-muted-foreground text-sm">
+                {event.description}
+              </p>
+              {event.hymns.length > 0 && (
+                <div className="mt-5 pt-5 border-t border-border">
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <p className="font-body text-sm font-semibold text-foreground">
+                      {event.hymnsLabel}
+                    </p>
+                    {event.date && (
+                      <p className="font-body text-xs text-muted-foreground">
+                        · {formatDate(event.date)}
                       </p>
-                      {event.date && (
-                        <p className="font-body text-xs text-muted-foreground">
-                          · {formatDate(event.date)}
-                        </p>
-                      )}
-                    </div>
-                    <ul className="space-y-1">
-                      {event.hymns.map((hymn) => (
-                        <li
-                          key={hymn.id}
-                          className="font-body text-sm text-muted-foreground flex items-baseline gap-2"
-                        >
-                          {hymn.number && (
-                            <span className="text-xs font-medium text-primary shrink-0">
-                              {hymn.number}
-                            </span>
-                          )}
-                          <span>{hymn.title}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    )}
                   </div>
-                )}
-              </CardContent>
-            </Card>
+                  <ul className="space-y-1">
+                    {event.hymns.map((hymn) => (
+                      <li
+                        key={hymn.id}
+                        className="font-body text-sm text-muted-foreground flex items-baseline gap-2"
+                      >
+                        {hymn.number && (
+                          <span className="text-xs font-medium text-primary shrink-0">
+                            {hymn.number}
+                          </span>
+                        )}
+                        <span>{hymn.title}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           ))}
         </div>
         <p className="font-body text-sm text-muted-foreground text-center mt-8">

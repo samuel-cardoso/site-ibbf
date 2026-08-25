@@ -1,5 +1,4 @@
 import { MapPin, Mail, Clock } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import GoogleMap from "./GoogleMap";
 import AnimatedSection from "@/components/ui/animated-section";
 
@@ -30,40 +29,42 @@ const Contact = () => {
       <AnimatedSection>
       <div className="container mx-auto px-4">
 
-        <div className="text-center mb-12">
+        <div className="mb-12 md:mb-16 max-w-2xl">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
             Fale Conosco
           </h2>
-          <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="font-body text-lg text-muted-foreground">
             Estamos aqui para servir você. Entre em contato conosco!
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {contactInfo.map((info, index) => (
-            <Card key={index} className="text-center border-2 hover:border-primary transition-colors">
-              <CardContent className="pt-6">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-full mb-4">
-                  <info.icon className="h-7 w-7 text-primary" />
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start">
+          <div className="lg:col-span-2 divide-y divide-border border-t border-border">
+            {contactInfo.map((info, index) => (
+              <div key={index} className="flex gap-4 py-6">
+                <info.icon className="h-5 w-5 text-primary mt-1 shrink-0" strokeWidth={1.75} />
+                <div>
+                  <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
+                    {info.title}
+                  </h3>
+                  <p className="font-body text-foreground/90">
+                    {info.content}
+                  </p>
+                  <p className="font-body text-sm text-muted-foreground">
+                    {info.subContent}
+                  </p>
                 </div>
-                <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
-                  {info.title}
-                </h3>
-                <p className="font-body text-foreground font-medium mb-1">
-                  {info.content}
-                </p>
-                <p className="font-body text-sm text-muted-foreground">
-                  {info.subContent}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </div>
+            ))}
+          </div>
 
-        <GoogleMap 
-          address="R. Benjamin Franklin, 73 - Harmonia, Canoas - RS, 92310-380"
-          height="500px"  
-        />
+          <div className="lg:col-span-3">
+            <GoogleMap
+              address="R. Benjamin Franklin, 73 - Harmonia, Canoas - RS, 92310-380"
+              height="420px"
+            />
+          </div>
+        </div>
       </div>
       </AnimatedSection>
     </section>
