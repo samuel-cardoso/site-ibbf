@@ -1,34 +1,19 @@
-"use client";
+import "./globals.css";
 
-import Navbar from "@/components/home/Navbar";
-import { Button } from "@/components/ui/button";
-
-const NotFound = () => {
+export default function GlobalNotFound() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
-      <div className="flex-1 flex items-center justify-center px-4 py-20">
-        <div className="text-center max-w-2xl mx-auto">
-          <h1 className="font-heading text-6xl md:text-8xl font-bold text-primary mb-6">
-            404
-          </h1>
-          <p className="font-body text-xl md:text-2xl text-foreground/80 mb-8">
-            Oops! Essa página não existe.
+    <html lang="pt">
+      <body className="antialiased">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground px-4 text-center">
+          <h1 className="text-6xl font-bold mb-4">404</h1>
+          <p className="text-lg mb-8">
+            Página não encontrada. / Page not found.
           </p>
-          <p className="font-body text-base text-muted-foreground mb-8">
-            A página que você está procurando não foi encontrada ou foi movida.
-          </p>
-          <Button 
-            size="lg"
-            className="bg-primary hover:bg-primary-light text-primary-foreground font-body font-semibold"
-            asChild
-          >
-            <a href="/">Voltar para o Início</a>
-          </Button>
+          <a href="/pt" className="underline text-primary">
+            Voltar para o início / Back to home
+          </a>
         </div>
-      </div>
-    </div>
+      </body>
+    </html>
   );
-};
-
-export default NotFound;
+}

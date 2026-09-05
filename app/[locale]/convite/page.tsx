@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import { Share2, Users } from "lucide-react";
@@ -21,33 +22,36 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-const confirmationSchema = z.object({
-  contact: z.string()
-    .trim()
-    .refine((val) => {
-      const numbers = unmaskPhone(val);
-      return numbers.length >= 10 && numbers.length <= 11;
-    }, {
-      message: "Telefone deve ter 10 ou 11 dígitos"
-    }),
-  numberOfPeople: z.string()
-    .refine((val) => !isNaN(Number(val)) && Number(val) >= 1 && Number(val) <= 50, {
-      message: "Número de pessoas deve ser entre 1 e 50"
-    }),
-  names: z.array(z.object({
-    name: z.string()
+function buildConfirmationSchema(t: ReturnType<typeof useTranslations<"ConvitePage">>) {
+  return z.object({
+    contact: z.string()
       .trim()
-      .min(2, { message: "Nome deve ter pelo menos 2 caracteres" })
-      .max(100, { message: "Nome deve ter no máximo 100 caracteres" })
-      .refine((val) => !/\d/.test(val), {
-        message: "Nome não pode conter números"
-      })
-  })).min(1, { message: "Pelo menos um nome é obrigatório" })
-});
+      .refine((val) => {
+        const numbers = unmaskPhone(val);
+        return numbers.length >= 10 && numbers.length <= 11;
+      }, {
+        message: t("validation.phoneInvalid")
+      }),
+    numberOfPeople: z.string()
+      .refine((val) => !isNaN(Number(val)) && Number(val) >= 1 && Number(val) <= 50, {
+        message: t("validation.peopleRange")
+      }),
+    names: z.array(z.object({
+      name: z.string()
+        .trim()
+        .min(2, { message: t("validation.nameTooShort") })
+        .max(100, { message: t("validation.nameTooLong") })
+        .refine((val) => !/\d/.test(val), {
+          message: t("validation.nameHasNumbers")
+        })
+    })).min(1, { message: t("validation.atLeastOneName") })
+  });
+}
 
-type ConfirmationFormData = z.infer<typeof confirmationSchema>;
+type ConfirmationFormData = z.infer<ReturnType<typeof buildConfirmationSchema>>;
 
 export default function InvitePage() {
+  const t = useTranslations("ConvitePage");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [pageUrl, setPageUrl] = useState("");
 
@@ -56,6 +60,8 @@ export default function InvitePage() {
       setPageUrl(window.location.href);
     }
   }, []);
+
+  const confirmationSchema = useMemo(() => buildConfirmationSchema(t), [t]);
 
   const form = useForm<ConfirmationFormData>({
     resolver: zodResolver(confirmationSchema),
@@ -83,21 +89,19 @@ export default function InvitePage() {
     }
   }, [numberOfPeople, form]);
 
-  const shareMessage = "Você está convidado para celebrar conosco a presença de Deus na 1ª Igreja Batista Bíblica Fundamentalista de Canoas! Venha experimentar a comunhão, adoração e o ensino da Palavra.";
-
   const handleWhatsAppShare = () => {
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage + " " + pageUrl)}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(t("shareMessage") + " " + pageUrl)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(pageUrl).then(() => {
-      toast.success("Link copiado!", {
-        description: "O link do convite foi copiado para a área de transferência.",
+      toast.success(t("toastCopiedTitle"), {
+        description: t("toastCopiedDescription"),
       });
     }).catch(() => {
-      toast.error("Erro", {
-        description: "Não foi possível copiar o link.",
+      toast.error(t("toastCopyErrorTitle"), {
+        description: t("toastCopyErrorDescription"),
       });
     });
   };
@@ -121,13 +125,13 @@ export default function InvitePage() {
       const responseData = await response.json();
 
       if (!response.ok) {
-        const errorMessage = responseData.error || "Erro ao enviar confirmação";
+        const errorMessage = responseData.error || t("toastErrorTitle");
         throw new Error(errorMessage);
       }
 
-      const firstName = data.names[0]?.name || "Visitante";
-      toast.success("Confirmação recebida!", {
-        description: `Obrigado, ${firstName}! Sua presença foi confirmada para ${data.numberOfPeople} pessoa(s).`,
+      const firstName = data.names[0]?.name || t("defaultVisitorName");
+      toast.success(t("toastSuccessTitle"), {
+        description: t("toastSuccessDescription", { name: firstName, count: data.numberOfPeople }),
       });
 
       form.reset({
@@ -137,8 +141,8 @@ export default function InvitePage() {
       });
     } catch (error: any) {
       console.error("Erro ao enviar confirmação:", error);
-      toast.error("Erro ao confirmar presença", {
-        description: "Ocorreu um erro ao processar sua confirmação. Por favor, tente novamente.",
+      toast.error(t("toastErrorTitle"), {
+        description: t("toastErrorDescription"),
       });
     } finally {
       setIsSubmitting(false);
@@ -154,43 +158,43 @@ export default function InvitePage() {
           <div className="text-center space-y-8">
 
             <h1 className="font-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary mb-6 leading-relaxed">
-              Você está convidado
+              {t("headline")}
             </h1>
 
             <p className="font-heading text-xl md:text-2xl lg:text-3xl text-foreground italic">
-              Para celebrar conosco a presença de Deus
+              {t("subheadline")}
             </p>
 
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto my-8"></div>
 
             <div className="max-w-2xl mx-auto space-y-6">
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                É com grande alegria que convidamos você e sua família para participar de nossos cultos e eventos especiais.
+                {t("intro1")}
               </p>
 
               <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                Venha experimentar a comunhão, adoração e o ensino da Palavra de Deus em um ambiente acolhedor.
+                {t("intro2")}
               </p>
 
               <div className="mt-8 pt-8 border-t border-primary/20 space-y-4">
                 <div>
                   <p className="font-body text-base text-foreground leading-relaxed">
-                    <strong className="font-semibold">Nosso endereço:</strong>
+                    <strong className="font-semibold">{t("addressLabel")}</strong>
                   </p>
                   <p className="font-body text-base text-muted-foreground leading-relaxed">
-                    R. Benjamin Franklin, 73 - Harmonia<br />
-                    Canoas - RS, 92310-380
+                    {t("addressLine1")}<br />
+                    {t("addressLine2")}
                   </p>
                 </div>
 
                 <div>
                   <p className="font-body text-base text-foreground leading-relaxed">
-                    <strong className="font-semibold">Nossos horários:</strong>
+                    <strong className="font-semibold">{t("scheduleLabel")}</strong>
                   </p>
                   <p className="font-body text-base text-muted-foreground leading-relaxed">
-                    Escola Bíblica Dominical - Domingo às 9h<br />
-                    Culto de Adoração - Domingo às 19h30<br />
-                    Reunião de Oração - Quarta-feira às 19h30<br />
+                    {t("scheduleLine1")}<br />
+                    {t("scheduleLine2")}<br />
+                    {t("scheduleLine3")}<br />
                   </p>
                 </div>
               </div>
@@ -203,10 +207,10 @@ export default function InvitePage() {
                     <Users className="h-8 w-8 text-primary" />
                   </div>
                   <h2 className="font-script text-4xl md:text-5xl text-primary mb-3">
-                    Confirme sua presença
+                    {t("formTitle")}
                   </h2>
                   <p className="font-body text-muted-foreground">
-                    Ficaremos muito felizes em recebê-lo!
+                    {t("formSubtitle")}
                   </p>
                 </div>
 
@@ -217,10 +221,10 @@ export default function InvitePage() {
                       name="contact"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="font-heading">Telefone ou WhatsApp</FormLabel>
+                          <FormLabel className="font-heading">{t("contactLabel")}</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="(00) 00000-0000"
+                              placeholder={t("contactPlaceholder")}
                               {...field}
                               onChange={(e) => {
                                 const masked = maskPhone(e.target.value);
@@ -240,7 +244,7 @@ export default function InvitePage() {
                       name="numberOfPeople"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="font-heading">Número de pessoas</FormLabel>
+                          <FormLabel className="font-heading">{t("peopleLabel")}</FormLabel>
                           <FormControl>
                             <Input
                               type="number"
@@ -265,11 +269,11 @@ export default function InvitePage() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="font-heading">
-                                Nome {index + 1} {index === 0 && "(Responsável)"}
+                                {t("nameLabel", { index: index + 1 })} {index === 0 && t("responsibleSuffix")}
                               </FormLabel>
                               <FormControl>
                                 <Input
-                                  placeholder={`Digite o nome da pessoa ${index + 1}`}
+                                  placeholder={t("namePlaceholder", { index: index + 1 })}
                                   {...field}
                                   onChange={(e) => {
                                     const valueWithoutNumbers = e.target.value.replace(/\d/g, "");
@@ -291,7 +295,7 @@ export default function InvitePage() {
                       size="lg"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Enviando..." : "Confirmar Presença"}
+                      {isSubmitting ? t("submittingButton") : t("submitButton")}
                     </Button>
                   </form>
                 </Form>
@@ -300,7 +304,7 @@ export default function InvitePage() {
 
             <div className="mt-16">
               <p className="font-body text-lg text-foreground mb-8 max-w-xl mx-auto">
-                Convide seus amigos e familiares para conhecer nossa comunidade
+                {t("shareText")}
               </p>
 
               <div className="flex flex-wrap justify-center gap-4">
@@ -310,7 +314,7 @@ export default function InvitePage() {
                   className="font-body font-semibold bg-[#25D366] hover:bg-[#20BD5A] text-white gap-2 cursor-pointer"
                 >
                   <Share2 className="h-5 w-5" />
-                  Compartilhar no WhatsApp
+                  {t("whatsappButton")}
                 </Button>
 
                 <Button
@@ -320,7 +324,7 @@ export default function InvitePage() {
                   className="font-body font-semibold gap-2 cursor-pointer"
                 >
                   <Share2 className="h-5 w-5" />
-                  Copiar Link
+                  {t("copyLinkButton")}
                 </Button>
               </div>
             </div>

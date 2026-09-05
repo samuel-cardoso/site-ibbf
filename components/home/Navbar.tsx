@@ -1,14 +1,16 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
 import { smoothScrollTo } from "@/lib/utils";
 import { motion } from "motion/react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 
 const Navbar = () => {
+  const t = useTranslations("Navbar");
   const [isOpen, setIsOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
@@ -43,13 +45,13 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Início", href: "#inicio" },
-    { name: "Sobre", href: "#sobre" },
-    { name: "Programação", href: "#programacao" },
-    { name: "Contato", href: "#contato" },
-    { name: "No que cremos?", href: "/no-que-cremos" },
-    { name: "Agenda", href: "/agenda" },
-    { name: "Convite", href: "/convite" }
+    { name: t("home"), href: "#inicio" },
+    { name: t("about"), href: "#sobre" },
+    { name: t("schedule"), href: "#programacao" },
+    { name: t("contact"), href: "#contato" },
+    { name: t("believe"), href: "/no-que-cremos" },
+    { name: t("agenda"), href: "/agenda" },
+    { name: t("invite"), href: "/convite" }
   ];
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -80,12 +82,12 @@ const Navbar = () => {
 
           <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity group">
             <img
-              src="assets/logo-igreja.png"
+              src="/assets/logo-igreja.png"
               alt="Logo"
               className="object-contain w-14 dark:hidden"
             />
             <img
-              src="assets/logo-igreja-branca.png"
+              src="/assets/logo-igreja-branca.png"
               alt="Logo"
               className="object-contain w-14 hidden dark:block"
             />
@@ -152,11 +154,11 @@ const Navbar = () => {
               );
             })}
             <span className="h-4 w-px bg-border" />
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
 
           <div className="flex items-center gap-1 md:hidden">
-            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-foreground hover:text-primary transition-colors"
@@ -226,6 +228,10 @@ const Navbar = () => {
                   </a>
                 );
               })}
+              <div className="border-t border-border mt-2 pt-3 flex items-center gap-2">
+                <LanguageSwitcher />
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         )}

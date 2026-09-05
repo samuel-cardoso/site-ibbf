@@ -1,9 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { smoothScrollTo } from "@/lib/utils";
 import AnimatedSection from "@/components/ui/animated-section";
 
 const About = () => {
+  const t = useTranslations("About");
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     smoothScrollTo(href);
@@ -15,30 +17,20 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Sobre Nós
+              {t("title")}
             </h2>
             <div className="space-y-4 font-body text-lg text-foreground/80">
-              <p>
-                Somos uma igreja com mais de 47 anos de existência, e continuamos comprometidos com a pregação fiel 
-                da Palavra de Deus para salvação e a edificação do corpo de Cristo.
-              </p>
-              <p>
-                Nossa igreja foi fundada com o propósito de ser uma comunidade onde famílias possam 
-                crescer na graça e no conhecimento do Senhor Jesus Cristo, mantendo firmes os 
-                princípios bíblicos e a sã doutrina.
-              </p>
-              <p>
-                Aqui, você e sua família são bem-vindos para adorar, aprender e servir juntos, 
-                enquanto buscamos honrar a Deus em tudo o que fazemos.
-              </p>
+              <p>{t("paragraph1")}</p>
+              <p>{t("paragraph2")}</p>
+              <p>{t("paragraph3")}</p>
             </div>
             <div className="mt-8">
-              <a 
+              <a
                 href="#programacao"
                 onClick={(e) => handleSmoothScroll(e, "#programacao")}
                 className="inline-block font-body font-semibold text-primary hover:text-primary-light transition-colors"
               >
-                Veja nossa programação →
+                {t("ctaLink")}
               </a>
             </div>
           </div>
@@ -47,7 +39,7 @@ const About = () => {
             <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
               <img
                 src={"/assets/church-building.jpg"}
-                alt="Fachada da Igreja Batista Fundamental"
+                alt={t("imageAlt")}
                 className="w-full h-full object-cover"
               />
             </div>

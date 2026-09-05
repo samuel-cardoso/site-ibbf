@@ -2,11 +2,12 @@
 
 import { GoogleMapProps } from "@/lib/types";
 
-const GoogleMap = ({ 
-  address, 
-  height, 
+const GoogleMap = ({
+  address,
+  height,
   className = "",
-  apiKey 
+  apiKey,
+  title = "Localização da Igreja",
 }: GoogleMapProps) => {
   const encodedAddress = encodeURIComponent(address);
 
@@ -24,7 +25,7 @@ const GoogleMap = ({
         allowFullScreen
         referrerPolicy="no-referrer-when-downgrade"
         src={mapUrl}
-        title="Localização da Igreja"
+        title={title}
         className="w-full"
       />
     </div>

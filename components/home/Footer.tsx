@@ -1,20 +1,22 @@
 "use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { Facebook, Instagram, Youtube } from "lucide-react";
 import { smoothScrollTo } from "@/lib/utils";
 import { TikTokIcon, ThreadsIcon } from "@/lib/consts";
 
 const Footer = () => {
+  const t = useTranslations("Footer");
+  const tNav = useTranslations("Navbar");
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
   const footerLinks = [
-    { name: "Início", href: "#inicio" },
-    { name: "Sobre", href: "#sobre" },
-    { name: "Programação", href: "#programacao" },
-    { name: "Contato", href: "#contato" },
+    { name: tNav("home"), href: "#inicio" },
+    { name: tNav("about"), href: "#sobre" },
+    { name: tNav("schedule"), href: "#programacao" },
+    { name: tNav("contact"), href: "#contato" },
   ];
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -30,7 +32,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="assets/logo-igreja-branca.png"
+                src="/assets/logo-igreja-branca.png"
                 alt="Logo"
                 className="object-contain w-10"
               />
@@ -44,13 +46,12 @@ const Footer = () => {
               </div>
             </div>
             <p className="font-body text-sm text-footer-foreground/80">
-              Uma igreja comprometida com a pregação fiel da Palavra de Deus e a
-              comunhão dos santos.
+              {t("blurb")}
             </p>
           </div>
 
           <div>
-            <h4 className="font-heading text-lg font-semibold mb-4">Links Rápidos</h4>
+            <h4 className="font-heading text-lg font-semibold mb-4">{t("quickLinks")}</h4>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2 font-body text-sm">
               {footerLinks.map((link) => {
                 if (isHomePage) {
@@ -75,46 +76,37 @@ const Footer = () => {
                   </Link>
                 );
               })}
-              {isHomePage ? (
-                <Link
-                  href="/convite"
-                  className="text-footer-foreground/80 hover:text-primary transition-colors"
-                >
-                  Convite
-                </Link>
-              ) : (
-                <Link
-                  href="/convite"
-                  className="text-footer-foreground/80 hover:text-primary transition-colors"
-                >
-                  Convite
-                </Link>
-              )}
+              <Link
+                href="/convite"
+                className="text-footer-foreground/80 hover:text-primary transition-colors"
+              >
+                {tNav("invite")}
+              </Link>
               <Link
                 href="/ldpg"
                 className="text-footer-foreground/80 hover:text-primary transition-colors"
               >
-                LGPD
+                {t("lgpd")}
               </Link>
               <Link
                 href="/no-que-cremos"
                 className="text-footer-foreground/80 hover:text-primary transition-colors"
               >
-                No que cremos?
+                {tNav("believe")}
               </Link>
               <Link
                 href="/agenda"
                 className="text-footer-foreground/80 hover:text-primary transition-colors"
               >
-                Agenda
+                {tNav("agenda")}
               </Link>
             </div>
           </div>
 
           <div>
-            <h4 className="font-heading text-lg font-semibold mb-4">Redes Sociais</h4>
+            <h4 className="font-heading text-lg font-semibold mb-4">{t("socialMedia")}</h4>
             <p className="font-body text-sm text-footer-foreground/80 mb-4">
-              Acompanhe nossas redes sociais e fique por dentro de tudo que acontece!
+              {t("socialMediaText")}
             </p>
             <div className="flex space-x-4">
               <a
@@ -163,7 +155,7 @@ const Footer = () => {
 
         <div className="border-t border-footer-foreground/20 pt-8 text-center">
           <p className="font-body text-sm text-footer-foreground/60">
-            © {new Date().getFullYear()} 1ª Igreja Batista Bíblica Fundamentalista de Canoas. Todos os direitos reservados.
+            {t("copyright", { year: new Date().getFullYear() })}
           </p>
         </div>
       </div>

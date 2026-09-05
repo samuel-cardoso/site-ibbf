@@ -3,4 +3,5 @@ export interface GoogleMapProps {
 	height?: string;
 	className?: string;
 	apiKey?: string;
+	title?: string;
   }

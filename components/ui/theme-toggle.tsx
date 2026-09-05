@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
+import { useTranslations } from "next-intl"
 import { Check, Laptop, Moon, Sun } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -13,12 +14,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 const options = [
-  { value: "light", label: "Claro", icon: Sun },
-  { value: "dark", label: "Escuro", icon: Moon },
-  { value: "system", label: "Sistema", icon: Laptop },
+  { value: "light", icon: Sun },
+  { value: "dark", icon: Moon },
+  { value: "system", icon: Laptop },
 ] as const
 
 export function ThemeToggle() {
+  const t = useTranslations("ThemeToggle")
   const { theme, resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
@@ -39,16 +41,16 @@ export function ThemeToggle() {
           variant="ghost"
           size="icon"
           className="cursor-pointer text-foreground hover:text-white"
-          aria-label="Alternar tema"
+          aria-label={t("ariaLabel")}
         >
           {isDark ? <Moon size={20} /> : <Sun size={20} />}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {options.map(({ value, label, icon: Icon }) => (
+        {options.map(({ value, icon: Icon }) => (
           <DropdownMenuItem key={value} onClick={() => setTheme(value)}>
             <Icon />
-            <span>{label}</span>
+            <span>{t(value)}</span>
             {theme === value && <Check className="ml-auto size-4" />}
           </DropdownMenuItem>
         ))}

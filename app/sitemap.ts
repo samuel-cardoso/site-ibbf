@@ -1,33 +1,28 @@
 import { MetadataRoute } from "next";
+import { routing } from "@/i18n/routing";
+
+const pages: { path: string; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number }[] = [
+  { path: "", changeFrequency: "weekly", priority: 1 },
+  { path: "/convite", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/no-que-cremos", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/agenda", changeFrequency: "weekly", priority: 0.8 },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const lastModified = new Date();
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/convite`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/no-que-cremos`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/agenda`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-  ];
+  return routing.locales.flatMap((locale) =>
+    pages.map(({ path, changeFrequency, priority }) => ({
+      url: `${baseUrl}/${locale}${path}`,
+      lastModified,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: Object.fromEntries(
+          routing.locales.map((l) => [l, `${baseUrl}/${l}${path}`])
+        ),
+      },
+    }))
+  );
 }
-

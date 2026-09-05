@@ -1,26 +1,29 @@
 import { MapPin, Mail, Clock } from "lucide-react";
+import { useTranslations } from "next-intl";
 import GoogleMap from "./GoogleMap";
 import AnimatedSection from "@/components/ui/animated-section";
 
 const Contact = () => {
+  const t = useTranslations("Contact");
+
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Endereço",
-      content: "R. Benjamin Franklin, 73 - Harmonia",
-      subContent: "Canoas - RS, CEP 92310-380"
+      title: t("addressTitle"),
+      content: t("addressLine1"),
+      subContent: t("addressLine2")
     },
     {
       icon: Mail,
-      title: "E-mail",
-      content: "contato@ibbfcanoas.com.br",
-      subContent: "Responderemos em breve"
+      title: t("emailTitle"),
+      content: t("emailContent"),
+      subContent: t("emailSubContent")
     },
     {
       icon: Clock,
-      title: "Horário de Atendimento",
-      content: "Segunda a Sexta: 9h às 17h",
-      subContent: "Sábado: 9h às 12h"
+      title: t("hoursTitle"),
+      content: t("hoursContent"),
+      subContent: t("hoursSubContent")
     }
   ];
 
@@ -31,10 +34,10 @@ const Contact = () => {
 
         <div className="mb-12 md:mb-16 max-w-2xl">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Fale Conosco
+            {t("title")}
           </h2>
           <p className="font-body text-lg text-muted-foreground">
-            Estamos aqui para servir você. Entre em contato conosco!
+            {t("subtitle")}
           </p>
         </div>
 
@@ -62,6 +65,7 @@ const Contact = () => {
             <GoogleMap
               address="R. Benjamin Franklin, 73 - Harmonia, Canoas - RS, 92310-380"
               height="420px"
+              title={t("mapTitle")}
             />
           </div>
         </div>

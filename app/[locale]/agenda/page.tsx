@@ -1,10 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 
 export default function CalendarPage() {
+	const t = useTranslations("AgendaPage");
+	const locale = useLocale();
 	const calendarId = process.env.NEXT_PUBLIC_GOOGLE_CALENDAR;
 	const [isMobile, setIsMobile] = useState(false);
 
@@ -20,7 +23,7 @@ export default function CalendarPage() {
 	}, []);
 
 	const baseUrl = calendarId
-		? `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarId)}&ctz=America%2FSao_Paulo`
+		? `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(calendarId)}&ctz=America%2FSao_Paulo&hl=${locale}`
 		: null;
 
 	const calendarUrl = baseUrl
@@ -37,7 +40,7 @@ export default function CalendarPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center space-y-6 md:space-y-8 mb-8 md:mb-12">
             <p className="font-heading text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mt-8 md:mt-14">
-              Confira abaixo nossa agenda completa de cultos, eventos especiais e atividades da igreja.
+              {t("intro")}
             </p>
           </div>
 
@@ -54,12 +57,12 @@ export default function CalendarPage() {
                   }}
                   frameBorder="0"
                   scrolling="no"
-                  title="Agenda de Eventos"
+                  title={t("iframeTitle")}
                 ></iframe>
               ) : (
                 <div className="flex items-center justify-center h-full">
                   <p className="font-body text-muted-foreground text-center">
-                    Agenda não disponível no momento.
+                    {t("unavailable")}
                   </p>
                 </div>
               )}

@@ -1,9 +1,12 @@
 "use client"
 
+import { useTranslations } from "next-intl";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 
 export default function LDPGPage() {
+  const t = useTranslations("LdpgPage");
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
@@ -14,21 +17,21 @@ export default function LDPGPage() {
             <iframe
               src="/privacidade.pdf"
               className="w-full h-full border-0"
-              title="Política de Privacidade"
+              title={t("iframeTitle")}
             />
           </div>
         </div>
 
         <div className="mt-6 text-center">
           <p className="font-body text-sm text-muted-foreground">
-            Se o PDF não estiver visível, você pode{" "}
+            {t("fallbackText")}{" "}
             <a
               href="/privacidade.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline font-semibold"
-            > 
-              abrir em uma nova aba
+            >
+              {t("fallbackLink")}
             </a>
             .
           </p>
@@ -39,4 +42,3 @@ export default function LDPGPage() {
     </div>
   );
 }
-

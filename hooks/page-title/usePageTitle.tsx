@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
 
 const DEFAULT_TITLE = "1ª Igreja Batista Bíblica Fundamentalista de Canoas";
 
@@ -11,6 +12,7 @@ interface VisibleSection {
 }
 
 export function usePageTitle() {
+  const t = useTranslations("Navbar");
   const pathname = usePathname();
   const [hash, setHash] = useState<string>("");
   const [visibleSection, setVisibleSection] = useState<string>("");
@@ -149,10 +151,10 @@ export function usePageTitle() {
 
   const getPageTitle = (path: string, currentHash: string, currentVisibleSection: string) => {
     const hashMap: Record<string, string> = {
-      "#inicio": "Início | " + DEFAULT_TITLE,
-      "#sobre": "Sobre | " + DEFAULT_TITLE,
-      "#programacao": "Programação | " + DEFAULT_TITLE,
-      "#contato": "Contato | " + DEFAULT_TITLE
+      "#inicio": t("home") + " | " + DEFAULT_TITLE,
+      "#sobre": t("about") + " | " + DEFAULT_TITLE,
+      "#programacao": t("schedule") + " | " + DEFAULT_TITLE,
+      "#contato": t("contact") + " | " + DEFAULT_TITLE
     };
 
     if (currentHash && hashMap[currentHash]) {
@@ -164,12 +166,12 @@ export function usePageTitle() {
     }
 
     const titleMap: Record<string, string> = {
-      "/": "Início | " + DEFAULT_TITLE,
-      "/sobre": "Sobre | " + DEFAULT_TITLE,
-      "/programacao": "Programação | " + DEFAULT_TITLE,
-      "/contato": "Contato | " + DEFAULT_TITLE,
-      "/convite": "Convite | " + DEFAULT_TITLE,
-      "/no-que-cremos": "No que cremos? | " + DEFAULT_TITLE,
+      "/": t("home") + " | " + DEFAULT_TITLE,
+      "/sobre": t("about") + " | " + DEFAULT_TITLE,
+      "/programacao": t("schedule") + " | " + DEFAULT_TITLE,
+      "/contato": t("contact") + " | " + DEFAULT_TITLE,
+      "/convite": t("invite") + " | " + DEFAULT_TITLE,
+      "/no-que-cremos": t("believe") + " | " + DEFAULT_TITLE,
     };
 
     return titleMap[path] || DEFAULT_TITLE;

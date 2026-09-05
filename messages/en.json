@@ -1,0 +1,173 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "schedule": "Schedule",
+    "contact": "Contact",
+    "believe": "What We Believe",
+    "agenda": "Calendar",
+    "invite": "Invite"
+  },
+  "Footer": {
+    "quickLinks": "Quick Links",
+    "socialMedia": "Social Media",
+    "socialMediaText": "Follow our social media and stay up to date with everything that's happening!",
+    "blurb": "A church committed to the faithful preaching of God's Word and the fellowship of the saints.",
+    "lgpd": "Privacy Policy",
+    "copyright": "© {year} 1st Fundamentalist Bible Baptist Church of Canoas. All rights reserved."
+  },
+  "ThemeToggle": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "ariaLabel": "Toggle theme"
+  },
+  "LanguageSwitcher": {
+    "pt": "Português",
+    "en": "English",
+    "ariaLabel": "Change language"
+  },
+  "Hero": {
+    "greeting": "Welcome to",
+    "subtitle": "Join us on our journey of faith, tradition, and fellowship",
+    "ctaAbout": "About Us",
+    "ctaContact": "Contact Us",
+    "imageAlt": "Interior of the church"
+  },
+  "About": {
+    "title": "About Us",
+    "paragraph1": "We are a church with more than 47 years of history, and we remain committed to the faithful preaching of God's Word for salvation and the edification of the body of Christ.",
+    "paragraph2": "Our church was founded with the purpose of being a community where families can grow in the grace and knowledge of the Lord Jesus Christ, while holding firmly to biblical principles and sound doctrine.",
+    "paragraph3": "Here, you and your family are welcome to worship, learn, and serve together, as we seek to honor God in everything we do.",
+    "ctaLink": "See our schedule →",
+    "imageAlt": "Facade of the Fundamental Baptist Church"
+  },
+  "Schedule": {
+    "title": "Our Schedule",
+    "subtitle": "We offer several times of fellowship, worship, and biblical teaching. You are welcome at all of them!",
+    "footnote": "Hymns and songs are subject to change.",
+    "ebdTitle": "Sunday School",
+    "ebdDay": "Sundays",
+    "ebdDescription": "Bible study for all ages.",
+    "ebdHymnsLabel": "Hymns",
+    "worshipTitle": "Worship Service",
+    "worshipDay": "Sundays",
+    "worshipDescription": "Worship service and preaching.",
+    "worshipHymnsLabel": "Hymns and Songs",
+    "prayerTitle": "Prayer Meeting",
+    "prayerDay": "Wednesdays",
+    "prayerDescription": "Prayer meeting and preaching.",
+    "prayerHymnsLabel": "Hymns"
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to serve you. Get in touch with us!",
+    "addressTitle": "Address",
+    "addressLine1": "R. Benjamin Franklin, 73 - Harmonia",
+    "addressLine2": "Canoas - RS, 92310-380, Brazil",
+    "emailTitle": "Email",
+    "emailContent": "contato@ibbfcanoas.com.br",
+    "emailSubContent": "We'll get back to you soon",
+    "hoursTitle": "Office Hours",
+    "hoursContent": "Monday to Friday: 9am to 5pm",
+    "hoursSubContent": "Saturday: 9am to 12pm",
+    "mapTitle": "Church Location"
+  },
+  "BibleVerse": {
+    "quote": "I was glad when they said unto me, Let us go into the house of the Lord.",
+    "reference": "Psalm 122:1"
+  },
+  "ConvitePage": {
+    "headline": "You're Invited",
+    "subheadline": "To celebrate God's presence with us",
+    "intro1": "It is with great joy that we invite you and your family to take part in our services and special events.",
+    "intro2": "Come and experience fellowship, worship, and the teaching of God's Word in a welcoming environment.",
+    "addressLabel": "Our address:",
+    "addressLine1": "R. Benjamin Franklin, 73 - Harmonia",
+    "addressLine2": "Canoas - RS, 92310-380, Brazil",
+    "scheduleLabel": "Our schedule:",
+    "scheduleLine1": "Sunday School - Sunday at 9am",
+    "scheduleLine2": "Worship Service - Sunday at 7:30pm",
+    "scheduleLine3": "Prayer Meeting - Wednesday at 7:30pm",
+    "formTitle": "Confirm Your Attendance",
+    "formSubtitle": "We'll be so happy to welcome you!",
+    "contactLabel": "Phone or WhatsApp",
+    "contactPlaceholder": "(00) 00000-0000",
+    "peopleLabel": "Number of people",
+    "nameLabel": "Name {index}",
+    "responsibleSuffix": "(Main contact)",
+    "namePlaceholder": "Enter the name of person {index}",
+    "submitButton": "Confirm Attendance",
+    "submittingButton": "Sending...",
+    "shareText": "Invite your friends and family to get to know our community",
+    "whatsappButton": "Share on WhatsApp",
+    "copyLinkButton": "Copy Link",
+    "shareMessage": "You're invited to celebrate God's presence with us at the 1st Fundamentalist Bible Baptist Church of Canoas! Come and experience fellowship, worship, and the teaching of the Word.",
+    "defaultVisitorName": "Guest",
+    "toastCopiedTitle": "Link copied!",
+    "toastCopiedDescription": "The invitation link has been copied to your clipboard.",
+    "toastCopyErrorTitle": "Error",
+    "toastCopyErrorDescription": "Could not copy the link.",
+    "toastSuccessTitle": "Confirmation received!",
+    "toastSuccessDescription": "Thank you, {name}! Your attendance has been confirmed for {count} people.",
+    "toastErrorTitle": "Error confirming attendance",
+    "toastErrorDescription": "An error occurred while processing your confirmation. Please try again.",
+    "validation": {
+      "phoneInvalid": "Phone must have 10 or 11 digits",
+      "peopleRange": "Number of people must be between 1 and 50",
+      "nameTooShort": "Name must have at least 2 characters",
+      "nameTooLong": "Name must have at most 100 characters",
+      "nameHasNumbers": "Name cannot contain numbers",
+      "atLeastOneName": "At least one name is required"
+    }
+  },
+  "NoQueCremos": {
+    "intro": "Below you can review the fundamental points of our confession of faith.",
+    "referencesLabel": "References:",
+    "empty": "Content coming soon..."
+  },
+  "AgendaPage": {
+    "intro": "Check out our full calendar of services, special events, and church activities below.",
+    "iframeTitle": "Event Calendar",
+    "unavailable": "Calendar is currently unavailable."
+  },
+  "LdpgPage": {
+    "fallbackText": "If the PDF isn't visible, you can",
+    "fallbackLink": "open it in a new tab",
+    "iframeTitle": "Privacy Policy"
+  },
+  "NotFound": {
+    "title": "Oops! This page doesn't exist.",
+    "message": "The page you are looking for was not found or has been moved.",
+    "backHome": "Back to Home"
+  },
+  "Metadata": {
+    "Root": {
+      "description": "Fundamentalist Bible Baptist Church located in Canoas, RS, Brazil. Come get to know our community and take part in our services and events. Sunday School, Worship Service, and Prayer Meeting.",
+      "keywords": ["church", "baptist", "biblical", "fundamentalist", "Canoas", "RS", "Brazil", "worship service", "Sunday school", "prayer meeting"]
+    },
+    "Home": {
+      "description": "We are a Baptist, Biblical, and Fundamentalist church located in Canoas, RS, Brazil. Come get to know our community and take part in our services and events.",
+      "keywords": ["church", "baptist", "biblical", "fundamentalist", "Canoas", "RS", "Brazil", "worship service", "Sunday school", "prayer meeting", "Harmonia"]
+    },
+    "Agenda": {
+      "title": "Calendar",
+      "description": "Check out our calendar of events, services, and activities at the 1st Fundamentalist Bible Baptist Church of Canoas. Join us for our gatherings and celebrations.",
+      "keywords": ["calendar", "events", "services", "activities", "schedule", "church", "Canoas", "RS", "Brazil"]
+    },
+    "Convite": {
+      "title": "Invitation",
+      "description": "You're invited to celebrate God's presence with us at the 1st Fundamentalist Bible Baptist Church of Canoas. Come experience fellowship, worship, and the teaching of the Word.",
+      "keywords": ["invitation", "church", "worship service", "fellowship", "Canoas", "RS", "Brazil"]
+    },
+    "Ldpg": {
+      "title": "Privacy Policy",
+      "description": "Privacy and Data Protection Policy of the 1st Fundamentalist Bible Baptist Church of Canoas. Learn how we protect your personal data."
+    },
+    "NoQueCremos": {
+      "title": "What We Believe",
+      "description": "Learn about the fundamental points of our confession of faith. A fundamentalist Bible Baptist confession of faith with scripture references.",
+      "keywords": ["confession of faith", "doctrine", "beliefs", "baptist", "biblical", "fundamentalist", "scripture", "trinity", "christ"]
+    }
+  }
+}

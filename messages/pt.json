@@ -1,0 +1,173 @@
+{
+  "Navbar": {
+    "home": "Início",
+    "about": "Sobre",
+    "schedule": "Programação",
+    "contact": "Contato",
+    "believe": "No que cremos?",
+    "agenda": "Agenda",
+    "invite": "Convite"
+  },
+  "Footer": {
+    "quickLinks": "Links Rápidos",
+    "socialMedia": "Redes Sociais",
+    "socialMediaText": "Acompanhe nossas redes sociais e fique por dentro de tudo que acontece!",
+    "blurb": "Uma igreja comprometida com a pregação fiel da Palavra de Deus e a comunhão dos santos.",
+    "lgpd": "LGPD",
+    "copyright": "© {year} 1ª Igreja Batista Bíblica Fundamentalista de Canoas. Todos os direitos reservados."
+  },
+  "ThemeToggle": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema",
+    "ariaLabel": "Alternar tema"
+  },
+  "LanguageSwitcher": {
+    "pt": "Português",
+    "en": "English",
+    "ariaLabel": "Alternar idioma"
+  },
+  "Hero": {
+    "greeting": "Bem-vindo à",
+    "subtitle": "Junte-se a nós em nossa jornada de fé, tradição e comunhão",
+    "ctaAbout": "Conheça-nos",
+    "ctaContact": "Fale Conosco",
+    "imageAlt": "Interior da igreja"
+  },
+  "About": {
+    "title": "Sobre Nós",
+    "paragraph1": "Somos uma igreja com mais de 47 anos de existência, e continuamos comprometidos com a pregação fiel da Palavra de Deus para salvação e a edificação do corpo de Cristo.",
+    "paragraph2": "Nossa igreja foi fundada com o propósito de ser uma comunidade onde famílias possam crescer na graça e no conhecimento do Senhor Jesus Cristo, mantendo firmes os princípios bíblicos e a sã doutrina.",
+    "paragraph3": "Aqui, você e sua família são bem-vindos para adorar, aprender e servir juntos, enquanto buscamos honrar a Deus em tudo o que fazemos.",
+    "ctaLink": "Veja nossa programação →",
+    "imageAlt": "Fachada da Igreja Batista Fundamental"
+  },
+  "Schedule": {
+    "title": "Nossa Programação",
+    "subtitle": "Oferecemos diversos momentos de comunhão, adoração e ensino bíblico. Você é bem-vindo em todos eles!",
+    "footnote": "Os hinos e cânticos podem sofrer alterações.",
+    "ebdTitle": "Escola Bíblica Dominical",
+    "ebdDay": "Domingos",
+    "ebdDescription": "Estudo bíblico para todas as idades.",
+    "ebdHymnsLabel": "Hinos",
+    "worshipTitle": "Culto de Adoração",
+    "worshipDay": "Domingos",
+    "worshipDescription": "Culto de adoração e pregação.",
+    "worshipHymnsLabel": "Hinos e Cânticos",
+    "prayerTitle": "Culto de Oração",
+    "prayerDay": "Quartas-feiras",
+    "prayerDescription": "Culto de oração e pregação.",
+    "prayerHymnsLabel": "Hinos"
+  },
+  "Contact": {
+    "title": "Fale Conosco",
+    "subtitle": "Estamos aqui para servir você. Entre em contato conosco!",
+    "addressTitle": "Endereço",
+    "addressLine1": "R. Benjamin Franklin, 73 - Harmonia",
+    "addressLine2": "Canoas - RS, CEP 92310-380",
+    "emailTitle": "E-mail",
+    "emailContent": "contato@ibbfcanoas.com.br",
+    "emailSubContent": "Responderemos em breve",
+    "hoursTitle": "Horário de Atendimento",
+    "hoursContent": "Segunda a Sexta: 9h às 17h",
+    "hoursSubContent": "Sábado: 9h às 12h",
+    "mapTitle": "Localização da Igreja"
+  },
+  "BibleVerse": {
+    "quote": "Alegrei-me quando me disseram: Vamos à Casa do Senhor!",
+    "reference": "Salmos 122:1"
+  },
+  "ConvitePage": {
+    "headline": "Você está convidado",
+    "subheadline": "Para celebrar conosco a presença de Deus",
+    "intro1": "É com grande alegria que convidamos você e sua família para participar de nossos cultos e eventos especiais.",
+    "intro2": "Venha experimentar a comunhão, adoração e o ensino da Palavra de Deus em um ambiente acolhedor.",
+    "addressLabel": "Nosso endereço:",
+    "addressLine1": "R. Benjamin Franklin, 73 - Harmonia",
+    "addressLine2": "Canoas - RS, 92310-380",
+    "scheduleLabel": "Nossos horários:",
+    "scheduleLine1": "Escola Bíblica Dominical - Domingo às 9h",
+    "scheduleLine2": "Culto de Adoração - Domingo às 19h30",
+    "scheduleLine3": "Reunião de Oração - Quarta-feira às 19h30",
+    "formTitle": "Confirme sua presença",
+    "formSubtitle": "Ficaremos muito felizes em recebê-lo!",
+    "contactLabel": "Telefone ou WhatsApp",
+    "contactPlaceholder": "(00) 00000-0000",
+    "peopleLabel": "Número de pessoas",
+    "nameLabel": "Nome {index}",
+    "responsibleSuffix": "(Responsável)",
+    "namePlaceholder": "Digite o nome da pessoa {index}",
+    "submitButton": "Confirmar Presença",
+    "submittingButton": "Enviando...",
+    "shareText": "Convide seus amigos e familiares para conhecer nossa comunidade",
+    "whatsappButton": "Compartilhar no WhatsApp",
+    "copyLinkButton": "Copiar Link",
+    "shareMessage": "Você está convidado para celebrar conosco a presença de Deus na 1ª Igreja Batista Bíblica Fundamentalista de Canoas! Venha experimentar a comunhão, adoração e o ensino da Palavra.",
+    "defaultVisitorName": "Visitante",
+    "toastCopiedTitle": "Link copiado!",
+    "toastCopiedDescription": "O link do convite foi copiado para a área de transferência.",
+    "toastCopyErrorTitle": "Erro",
+    "toastCopyErrorDescription": "Não foi possível copiar o link.",
+    "toastSuccessTitle": "Confirmação recebida!",
+    "toastSuccessDescription": "Obrigado, {name}! Sua presença foi confirmada para {count} pessoa(s).",
+    "toastErrorTitle": "Erro ao confirmar presença",
+    "toastErrorDescription": "Ocorreu um erro ao processar sua confirmação. Por favor, tente novamente.",
+    "validation": {
+      "phoneInvalid": "Telefone deve ter 10 ou 11 dígitos",
+      "peopleRange": "Número de pessoas deve ser entre 1 e 50",
+      "nameTooShort": "Nome deve ter pelo menos 2 caracteres",
+      "nameTooLong": "Nome deve ter no máximo 100 caracteres",
+      "nameHasNumbers": "Nome não pode conter números",
+      "atLeastOneName": "Pelo menos um nome é obrigatório"
+    }
+  },
+  "NoQueCremos": {
+    "intro": "Abaixo você pode verificar os pontos fundamentais da nossa confissão de fé.",
+    "referencesLabel": "Referências:",
+    "empty": "Conteúdo em preparação..."
+  },
+  "AgendaPage": {
+    "intro": "Confira abaixo nossa agenda completa de cultos, eventos especiais e atividades da igreja.",
+    "iframeTitle": "Agenda de Eventos",
+    "unavailable": "Agenda não disponível no momento."
+  },
+  "LdpgPage": {
+    "fallbackText": "Se o PDF não estiver visível, você pode",
+    "fallbackLink": "abrir em uma nova aba",
+    "iframeTitle": "Política de Privacidade"
+  },
+  "NotFound": {
+    "title": "Oops! Essa página não existe.",
+    "message": "A página que você está procurando não foi encontrada ou foi movida.",
+    "backHome": "Voltar para o Início"
+  },
+  "Metadata": {
+    "Root": {
+      "description": "Igreja Batista Bíblica Fundamentalista localizada em Canoas, RS. Venha conhecer nossa comunidade e participar de nossos cultos e eventos. Escola Bíblica Dominical, Culto de Adoração e Reunião de Oração.",
+      "keywords": ["igreja", "batista", "bíblica", "fundamentalista", "Canoas", "RS", "culto", "adoração", "escola bíblica dominical", "reunião de oração"]
+    },
+    "Home": {
+      "description": "Somos uma igreja Batista, Bíblica e Fundamentalista, localizada em Canoas, RS. Venha conhecer nossa comunidade e participar de nossos cultos e eventos.",
+      "keywords": ["igreja", "batista", "bíblica", "fundamentalista", "Canoas", "RS", "culto", "adoração", "escola bíblica dominical", "reunião de oração", "Harmonia"]
+    },
+    "Agenda": {
+      "title": "Agenda",
+      "description": "Confira nossa agenda de eventos, cultos e atividades da 1ª Igreja Batista Bíblica Fundamentalista de Canoas. Participe dos nossos encontros e celebrações.",
+      "keywords": ["agenda", "eventos", "cultos", "atividades", "programação", "igreja", "Canoas", "RS", "calendário"]
+    },
+    "Convite": {
+      "title": "Convite",
+      "description": "Você está convidado para celebrar conosco a presença de Deus na 1ª Igreja Batista Bíblica Fundamentalista de Canoas. Venha experimentar a comunhão, adoração e o ensino da Palavra.",
+      "keywords": ["convite", "igreja", "culto", "adoração", "comunhão", "Canoas", "RS"]
+    },
+    "Ldpg": {
+      "title": "Política de Privacidade",
+      "description": "Política de Privacidade e Proteção de Dados da 1ª Igreja Batista Bíblica Fundamentalista de Canoas. Conheça como protegemos seus dados pessoais."
+    },
+    "NoQueCremos": {
+      "title": "No que cremos?",
+      "description": "Conheça os pontos fundamentais da nossa confissão de fé. Confissão de fé batista bíblica fundamentalista com referências bíblicas.",
+      "keywords": ["confissão de fé", "doutrina", "crenças", "batista", "bíblica", "fundamentalista", "escrituras", "trindade", "cristo"]
+    }
+  }
+}

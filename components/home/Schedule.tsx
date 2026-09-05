@@ -1,4 +1,5 @@
 import { BookOpen, HandHeart, Church } from "lucide-react";
+import { getTranslations, getLocale } from "next-intl/server";
 import { supabase } from "@/lib/supabase";
 import AnimatedSection from "@/components/ui/animated-section";
 
@@ -31,8 +32,8 @@ async function fetchNextService(labelFragment: string): Promise<ServiceData> {
   };
 }
 
-function formatDate(isoDate: string): string {
-  return new Date(isoDate).toLocaleDateString("pt-BR", {
+function formatDate(isoDate: string, locale: string): string {
+  return new Date(isoDate).toLocaleDateString(locale === "en" ? "en-US" : "pt-BR", {
     day: "numeric",
     month: "long",
     timeZone: "America/Sao_Paulo",
@@ -40,6 +41,9 @@ function formatDate(isoDate: string): string {
 }
 
 const Schedule = async () => {
+  const t = await getTranslations("Schedule");
+  const locale = await getLocale();
+
   const [ebd, adoracao, oracao] = await Promise.all([
     fetchNextService("Escola Bíblica"),
     fetchNextService("Culto de Adoração"),
@@ -49,29 +53,29 @@ const Schedule = async () => {
   const events = [
     {
       icon: BookOpen,
-      title: "Escola Bíblica Dominical",
-      day: "Domingos",
+      title: t("ebdTitle"),
+      day: t("ebdDay"),
       time: "09:00",
-      description: "Estudo bíblico para todas as idades.",
-      hymnsLabel: "Hinos",
+      description: t("ebdDescription"),
+      hymnsLabel: t("ebdHymnsLabel"),
       ...ebd,
     },
     {
       icon: Church,
-      title: "Culto de Adoração",
-      day: "Domingos",
+      title: t("worshipTitle"),
+      day: t("worshipDay"),
       time: "19:30",
-      description: "Culto de adoração e pregação.",
-      hymnsLabel: "Hinos e Cânticos",
+      description: t("worshipDescription"),
+      hymnsLabel: t("worshipHymnsLabel"),
       ...adoracao,
     },
     {
       icon: HandHeart,
-      title: "Culto de Oração",
-      day: "Quartas-feiras",
+      title: t("prayerTitle"),
+      day: t("prayerDay"),
       time: "19:30",
-      description: "Culto de oração e pregação.",
-      hymnsLabel: "Hinos",
+      description: t("prayerDescription"),
+      hymnsLabel: t("prayerHymnsLabel"),
       ...oracao,
     },
   ];
@@ -82,11 +86,10 @@ const Schedule = async () => {
       <div className="container mx-auto px-4">
         <div className="mb-12 md:mb-16 max-w-2xl">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Nossa Programação
+            {t("title")}
           </h2>
           <p className="font-body text-lg text-muted-foreground">
-            Oferecemos diversos momentos de comunhão, adoração e ensino bíblico.
-            Você é bem-vindo em todos eles!
+            {t("subtitle")}
           </p>
         </div>
 
@@ -113,7 +116,7 @@ const Schedule = async () => {
                     </p>
                     {event.date && (
                       <p className="font-body text-xs text-muted-foreground">
-                        · {formatDate(event.date)}
+                        · {formatDate(event.date, locale)}
                       </p>
                     )}
                   </div>
@@ -138,7 +141,7 @@ const Schedule = async () => {
           ))}
         </div>
         <p className="font-body text-sm text-muted-foreground text-center mt-8">
-          Os hinos e cânticos podem sofrer alterações.
+          {t("footnote")}
         </p>
       </div>
       </AnimatedSection>
