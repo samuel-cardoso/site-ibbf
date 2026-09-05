@@ -1,6 +1,7 @@
 import { PageTitle } from "@/components/PageTitle";
 import { Crimson_Text, Roboto, Roboto_Mono, Great_Vibes } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import StructuredData from "@/components/StructuredData";
 import type { Metadata } from "next";
@@ -104,15 +105,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br scroll-smooth">
+    <html lang="pt-br" suppressHydrationWarning>
       <body
         className={`${crimsonText.variable} ${roboto.variable} ${robotoMono.variable} ${greatVibes.variable} antialiased`}
       >
-        <StructuredData />
-        <GoogleAnalytics />
-        <Toaster />
-        <PageTitle />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <StructuredData />
+          <GoogleAnalytics />
+          <Toaster />
+          <PageTitle />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

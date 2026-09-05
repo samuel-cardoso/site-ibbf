@@ -30,7 +30,7 @@ export default function CalendarPage() {
 		: null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
 
       <section className="relative pt-24 md:pt-32 pb-12 md:pb-16 px-4 md:px-6 bg-gradient-to-br from-background via-secondary to-background flex-1">

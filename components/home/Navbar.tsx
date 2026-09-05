@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { smoothScrollTo } from "@/lib/utils";
 import { motion } from "motion/react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +82,12 @@ const Navbar = () => {
             <img
               src="assets/logo-igreja.png"
               alt="Logo"
-              className="object-contain w-14"
+              className="object-contain w-14 dark:hidden"
+            />
+            <img
+              src="assets/logo-igreja-branca.png"
+              alt="Logo"
+              className="object-contain w-14 hidden dark:block"
             />
             <div>
               <h1 className="font-heading text-sm md:text-base lg:text-xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
@@ -145,14 +151,19 @@ const Navbar = () => {
                 </div>
               );
             })}
+            <span className="h-4 w-px bg-border" />
+            <ThemeToggle />
           </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-1 md:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-foreground hover:text-primary transition-colors"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {isOpen && (

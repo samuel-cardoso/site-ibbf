@@ -5,11 +5,11 @@ import Footer from "@/components/home/Footer";
 
 export default function LDPGPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
-      
+
       <div className="flex-1 container mx-auto px-4 pt-32 pb-8">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-card rounded-lg shadow-lg overflow-hidden">
           <div className="w-full h-[calc(100vh-12.6rem)] max-md:h-[calc(100vh-14rem)] min-h-[420px]">
             <iframe
               src="/privacidade.pdf"

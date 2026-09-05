@@ -13,7 +13,7 @@ import { BookOpen } from "lucide-react";
 
 export default function NoQueCremosPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       
       <section className="relative pt-32 pb-16 px-6 bg-gradient-to-br from-background via-secondary to-background flex-1">
