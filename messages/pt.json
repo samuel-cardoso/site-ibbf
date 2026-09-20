@@ -6,7 +6,12 @@
     "contact": "Contato",
     "believe": "No que cremos?",
     "agenda": "Agenda",
-    "invite": "Convite"
+    "invite": "Convite",
+    "enter": "Entrar"
+  },
+  "EntrarPage": {
+    "title": "Em construção",
+    "message": "Estamos preparando esta área com muito carinho. Em breve você poderá acessá-la por aqui."
   },
   "Footer": {
     "quickLinks": "Links Rápidos",
@@ -168,6 +173,10 @@
       "title": "No que cremos?",
       "description": "Conheça os pontos fundamentais da nossa confissão de fé. Confissão de fé batista bíblica fundamentalista com referências bíblicas.",
       "keywords": ["confissão de fé", "doutrina", "crenças", "batista", "bíblica", "fundamentalista", "escrituras", "trindade", "cristo"]
+    },
+    "Entrar": {
+      "title": "Em construção",
+      "description": "Esta área está em construção. Em breve novidades da 1ª Igreja Batista Bíblica Fundamentalista de Canoas."
     }
   }
 }

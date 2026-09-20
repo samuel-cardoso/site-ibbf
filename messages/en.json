@@ -6,7 +6,12 @@
     "contact": "Contact",
     "believe": "What We Believe",
     "agenda": "Calendar",
-    "invite": "Invite"
+    "invite": "Invite",
+    "enter": "Sign In"
+  },
+  "EntrarPage": {
+    "title": "Under construction",
+    "message": "We're carefully building this area. You'll be able to access it here soon."
   },
   "Footer": {
     "quickLinks": "Quick Links",
@@ -168,6 +173,10 @@
       "title": "What We Believe",
       "description": "Learn about the fundamental points of our confession of faith. A fundamentalist Bible Baptist confession of faith with scripture references.",
       "keywords": ["confession of faith", "doctrine", "beliefs", "baptist", "biblical", "fundamentalist", "scripture", "trinity", "christ"]
+    },
+    "Entrar": {
+      "title": "Under construction",
+      "description": "This area is under construction. Stay tuned for news from the 1st Fundamentalist Bible Baptist Church of Canoas."
     }
   }
 }

@@ -8,6 +8,7 @@ import { smoothScrollTo } from "@/lib/utils";
 import { motion } from "motion/react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const t = useTranslations("Navbar");
@@ -156,6 +157,15 @@ const Navbar = () => {
             <span className="h-4 w-px bg-border" />
             <LanguageSwitcher />
             <ThemeToggle />
+            <Button
+              asChild
+              size="sm"
+              className="font-body font-semibold"
+            >
+              <Link href="/entrar" onClick={() => handleLinkClick("/entrar")}>
+                {t("enter")}
+              </Link>
+            </Button>
           </div>
 
           <div className="flex items-center gap-1 md:hidden">
@@ -231,6 +241,15 @@ const Navbar = () => {
               <div className="border-t border-border mt-2 pt-3 flex items-center gap-2">
                 <LanguageSwitcher />
                 <ThemeToggle />
+                <Button
+                  asChild
+                  size="sm"
+                  className="font-body font-semibold ml-auto"
+                >
+                  <Link href="/entrar" onClick={() => handleLinkClick("/entrar")}>
+                    {t("enter")}
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
